@@ -1,13 +1,21 @@
-# Star-XP Simulation Framwork
+# CEvNS-UCAS Simulation Framwork
 
 ## 介绍
-Star-XP 下的 Simulation 软件框架
+UCAS CEvNS 项目 Simulation 软件框架
 
 ## 软件架构
 
 Base on ROOT v6.22/08 and Geant4 v10.3.3
 
 ## 使用说明
+安装
+```bash
+git clone https://gitee.com/marry_tim/cevns-ucas.git
+cd cevns-ucas
+mkdir build
+cmake ..
+make
+```
 
 
 ### Simulation:
@@ -25,6 +33,7 @@ Base on ROOT v6.22/08 and Geant4 v10.3.3
 
     #### 输出文件设置：
         OutputFile: xxx.root
+        OutputLevel: 1
 
     #### 模拟方式设置：   
         1. 使用内置能谱模拟：
@@ -32,12 +41,11 @@ Base on ROOT v6.22/08 and Geant4 v10.3.3
         
         2. 使用SimpleGun模拟：
         GunType:Simple  
-        PGName: e+/e-/p+
+        PGName: e+/e-/gamma/p+/n
         PGEnergy:(MeV)
         PGPos:x,y,z
         PGPol:s1,s2,s3
         PGMomDir:px,py,pz
-        Simple模式下无法使用GenTime产生模式
         
         3. 使用mac文件模拟：
         GPSMacFile:xxx.mac
