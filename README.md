@@ -13,6 +13,7 @@ Base on ROOT v6.22/08 and Geant4 v10.3.3
 git clone https://gitee.com/marry_tim/cevns-ucas.git
 cd cevns-ucas
 mkdir build
+cd build
 cmake ..
 make
 ```
