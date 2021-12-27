@@ -1,0 +1,1257 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "starXP"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"add_definitions",
+			"include",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"/home/mart/Software/Geant4_10.3.3/install/lib/Geant4-10.3.3/UseGeant4.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 107,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 108,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 51,
+				"parent" : 0
+			},
+			{
+				"file" : 1,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 36,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 78,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 82,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 83,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 84,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 85,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 86,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 87,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 88,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 89,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 37,
+				"parent" : 4
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-W -Wall -pedantic -Wno-non-virtual-dtor -Wno-long-long -Wwrite-strings -Wpointer-arith -Woverloaded-virtual -Wno-variadic-macros -Wshadow -pipe -DG4USE_STD11 -pthread -ftls-model=initial-exec -std=c++11 -O3 -DNDEBUG -fno-trapping-math -ftree-vectorize -fno-math-errno  "
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "G4INTY_USE_QT"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4INTY_USE_XT"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4MULTITHREADED"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4UI_USE"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4UI_USE_QT"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4UI_USE_TCSH"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4VERBOSE"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4VIS_USE"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4VIS_USE_OPENGL"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4VIS_USE_OPENGLQT"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4VIS_USE_OPENGLX"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4VIS_USE_RAYTRACERX"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "G4_STORE_TRAJECTORY"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_NO_DEBUG"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_OPENGL_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_PRINTSUPPORT_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_WIDGETS_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "/home/mart/Software/ROOT_v6.22.08/install/include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/G4Actions/include"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/PhysicsList/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/AnalysisManager/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/DetectorConstruction/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/ParticleGunGenerator/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/ParticleSource/include"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/GPSModule/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "/home/mart/StarXP/CDEX/cevns-ucas/source/Generator/include"
+				},
+				{
+					"backtrace" : 15,
+					"isSystem" : true,
+					"path" : "/home/mart/Software/Geant4_10.3.3/install/include/Geant4"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/include/x86_64-linux-gnu/qt5"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/include/x86_64-linux-gnu/qt5/QtGui"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/include/x86_64-linux-gnu/qt5/QtCore"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/include/x86_64-linux-gnu/qt5/QtOpenGL"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "SimEventDict::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "starXP::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-W -Wall -pedantic -Wno-non-virtual-dtor -Wno-long-long -Wwrite-strings -Wpointer-arith -Woverloaded-virtual -Wno-variadic-macros -Wshadow -pipe -DG4USE_STD11 -pthread -ftls-model=initial-exec -std=c++11 -O3 -DNDEBUG -fno-trapping-math -ftree-vectorize -fno-math-errno",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-rdynamic",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/mart/StarXP/CDEX/cevns-ucas/build:/home/mart/Software/Geant4_10.3.3/install/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libSimEventDict.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4Tree.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4GMocren.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4visHepRep.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4RayTracer.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4VRML.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4OpenGL.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4gl2ps.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4interfaces.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4persistency.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4analysis.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4error_propagation.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4readout.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4physicslists.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4parmodels.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-L/home/mart/Software/ROOT_v6.22.08/install/lib -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -lROOTDataFrame -pthread -lm -ldl -rdynamic",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4FR.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4vis_management.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4modeling.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lSM",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lICE",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lX11",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lXext",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lGL",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lGLU",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lXmu",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libQt5OpenGL.so.5.12.8",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libQt5PrintSupport.so.5.12.8",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lxerces-c",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lfreetype",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4run.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4event.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4tracking.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4processes.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4zlib.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lexpat",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4digits_hits.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4track.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4particles.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4geometry.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4materials.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4graphics_reps.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4intercoms.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4global.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/mart/Software/Geant4_10.3.3/install/lib/libG4clhep.so",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "starXP",
+	"nameOnDisk" : "starXP",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "starXP.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/AnalysisManager/src/MyAnalysisManager.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/AnalysisManager/src/MyAnalysisMessenger.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/AnalysisManager/src/MyG4BasedAnalysis.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/AnalysisManager/src/MyRootBasedAnalysis.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/DetectorConstruction/src/MyDetectorConstruction.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/DetectorConstruction/src/MyDetectorMessenger.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/DetectorConstruction/src/MyDetectorReader.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/DetectorConstruction/src/MyDetectorSettings.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/DetectorConstruction/src/MyGDMLCustom.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/DetectorConstruction/src/MyMagneticField.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MyActionInitialization.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MyEvtAction.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MyRunAction.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MyRunManager.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MySDDetector.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MyStackAction.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MyStepAction.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/MyTrackAction.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/G4Actions/src/Verbose.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/ExGeneralParticleSource.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/ExGeneralParticleSourceMessenger.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/ExSPSAngDistribution.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/ExSPSEneDistribution.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/ExSPSPosDistribution.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/ExSPSTimDistribution.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/ExSingleParticleSource.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/JPCosmicMuonGun.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/JPMapMuonGun.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/GPSModule/src/JPUniformMuonGun.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/Generator/src/AlphaBranch.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/Generator/src/BetaBranch.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/Generator/src/BetaSpec.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/Generator/src/DecayBranch.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/Generator/src/DecaySpec.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleGunGenerator/src/GPSFromMAC.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleGunGenerator/src/PGGenerator.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleGunGenerator/src/PGGeneratorList.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleGunGenerator/src/PGNeutron.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleGunGenerator/src/SimpleParticleGun.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleSource/src/MyExGPS.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleSource/src/MyParticleGun.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleSource/src/MyParticleGunMessenger.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/ParticleSource/src/MyPrimaryGeneratorGPS.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/PhysicsList/src/MyPhysListEM.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/PhysicsList/src/MyPhysListOp.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/PhysicsList/src/MyPhysListTRD.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/PhysicsList/src/MyPhysicsList.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/AnalysisManager/include/MyAnalysisManager.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/AnalysisManager/include/MyAnalysisMessenger.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/AnalysisManager/include/MyG4BasedAnalysis.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/AnalysisManager/include/MyRootBasedAnalysis.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/DetectorConstruction/include/MyDetectorConstruction.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/DetectorConstruction/include/MyDetectorMessenger.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/DetectorConstruction/include/MyDetectorReader.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/DetectorConstruction/include/MyDetectorSettings.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/DetectorConstruction/include/MyMagneticField.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/DetectorConstruction/include/PrimaryDescription.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/DetectorConstruction/include/RadiatorDescription.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MyActionInitialization.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MyEvtAction.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MyRunAction.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MyRunManager.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MySDDetector.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MyStackAction.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MyStepAction.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/MyTrackAction.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/G4Actions/include/Verbose.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/ExGeneralParticleSource.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/ExGeneralParticleSourceMessenger.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/ExSPSAngDistribution.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/ExSPSEneDistribution.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/ExSPSPosDistribution.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/ExSPSTimDistribution.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/ExSingleParticleSource.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/JPCosmicMuonGun.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/JPMapMuonGun.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/JPSimPrimaryVertexInformation.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/GPSModule/include/JPUniformMuonGun.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/Generator/include/AlphaBranch.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/Generator/include/BetaBranch.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/Generator/include/BetaSpec.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/Generator/include/DecayBranch.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/Generator/include/DecaySpec.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleGunGenerator/include/GPSFromMAC.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleGunGenerator/include/PGGenerator.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleGunGenerator/include/PGGeneratorList.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleGunGenerator/include/PGNeutron.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleGunGenerator/include/SimpleParticleGun.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleSource/include/MyExGPS.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleSource/include/MyParticleGun.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleSource/include/MyParticleGunMessenger.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleSource/include/MyPrimaryGeneratorGPS.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/ParticleSource/include/RNGWrapper.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/PhysicsList/include/MyPhysListEM.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/PhysicsList/include/MyPhysListOp.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/PhysicsList/include/MyPhysListTRD.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/PhysicsList/include/MyPhysicsList.hh",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "EXECUTABLE"
+}

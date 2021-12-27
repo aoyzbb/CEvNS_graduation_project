@@ -169,14 +169,14 @@ void MyG4BasedAnalysis::BeginOfEventAction(const G4Event *evt)
     }
     else
     {
-        G4double gamma_countppu = 0;
-        G4double gamma_countppd = 0;
-        G4double gamma_countpnu = 0;
-        G4double gamma_countpnd = 0;
-        G4double gamma_countnnu = 0;
-        G4double gamma_countnnd = 0;
-        G4double gamma_countnpu = 0;
-        G4double gamma_countnpd = 0;
+        gamma_countppu = 0;
+        gamma_countppd = 0;
+        gamma_countpnu = 0;
+        gamma_countpnd = 0;
+        gamma_countnnu = 0;
+        gamma_countnnd = 0;
+        gamma_countnpu = 0;
+        gamma_countnpd = 0;
     }
 
     return;
