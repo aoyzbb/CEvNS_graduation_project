@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------
 # Setup the project
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
-project(starXPproj)
+project(nuHunterproj)
 
 ##----------------------------------------------------------------------------
 ## Get git commit ID
@@ -104,8 +104,8 @@ target_link_libraries(SimEventDict ${ROOT_LIBRARIES})
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
-add_executable(starXP starXP.cc ${sources} ${headers})
-target_link_libraries(starXP SimEventDict ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
+add_executable(nuHunter nuHunter.cc ${sources} ${headers})
+target_link_libraries(nuHunter SimEventDict ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
@@ -142,10 +142,10 @@ endforeach()
 # Add program to the project targets
 # (this avoids the need of typing the program name after make)
 #
-#add_custom_target(starXPproj DEPENDS starXP)
+#add_custom_target(nuHunterproj DEPENDS nuHunter)
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
 #set(CMAKE_INSTALL_PREFIX ../StarXP-install) 
-#install(TARGETS starXP DESTINATION bin)
+#install(TARGETS nuHunter DESTINATION bin)

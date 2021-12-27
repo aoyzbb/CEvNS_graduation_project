@@ -23,7 +23,7 @@ make
 1.  如何开始模拟：  
     ```bash
     cd build/source/0-Simulation
-    ./starXP -[v] [Simucard.card]
+    ./nuHunter -[v] [Simucard.card]
     ```
     `-[v]`选择将开启可视化界面，`-[Simucard.card]`将使用用户指定的.card文件作为模拟的输入。
 2.  Simucard文件设置(示例请见Simucard.card):  
