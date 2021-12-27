@@ -334,6 +334,8 @@ void MyG4BasedAnalysis::SteppingAction(const G4Step *aStep)
     }
     else
     {
+        G4ParticleDefinition *particle = aTrack->GetDefinition();
+        G4String name = particle->GetParticleName();
         if (postStepPoint->GetProcessDefinedStep()->GetProcessName() == "opticalphoton" && presentVolume->GetName() == "PMTvol") //要求是光子且击中PMT
         {
 

@@ -58,7 +58,6 @@ void PGNeutron::Generate()
             break;
         }
     }
-    double norm = 0.0379; //power law ,  rank = -1.6 , 5/3 A *0.01 ** (-0.6) = 1 (0.01: 10 keV)
 
     double Eng = pow((1 - randomnum) / norm, -5 / 3);
 

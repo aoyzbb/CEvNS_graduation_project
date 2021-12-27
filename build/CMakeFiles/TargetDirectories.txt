@@ -1,4 +1,0 @@
-/home/mart/StarXP/CDEX/cevns-ucas/build/CMakeFiles/rebuild_cache.dir
-/home/mart/StarXP/CDEX/cevns-ucas/build/CMakeFiles/edit_cache.dir
-/home/mart/StarXP/CDEX/cevns-ucas/build/CMakeFiles/starXP.dir
-/home/mart/StarXP/CDEX/cevns-ucas/build/CMakeFiles/SimEventDict.dir
