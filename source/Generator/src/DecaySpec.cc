@@ -25,7 +25,7 @@ DecaySpec::DecaySpec(std::string name, int z, int a)
 	Z = z;
 	A = a;
 
-	string path = "/mnt/g/books/graduation_project/python_simulation/geant4_simulation/coherent_new_bkg/source/Generator/data";
+	string path = "../source/Generator/data";
 
 	// Load Alpha decay data
 	string alphaDataFile = path+"/alpha/"+isotope+".txt";
