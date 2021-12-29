@@ -119,6 +119,7 @@
 #include "MyPhysListEM.hh"
 #include "MyPhysListOp.hh"
 #include "MyPhysListTRD.hh"
+#include "MyNeutronPhys.hh"
 
 #include "Verbose.hh"
 #include "MyPhysicsList.hh"
@@ -184,7 +185,7 @@ MyPhysicsList::MyPhysicsList(MyDetectorConstruction *det) : G4VModularPhysicsLis
         //opticalPhysics->Configure(kWLS, true); //波长位移
         //opticalPhysics->SetTrackSecondariesFirst(kWLS, true); //同上
     }
-    RegisterPhysics(opticalPhysics);
+    //RegisterPhysics(opticalPhysics);
 
     //#PhysTRD 1. 选择是否使用穿越辐射物理过程 MyPhysListTRD
     //--Transition radiation physics
@@ -207,11 +208,11 @@ MyPhysicsList::MyPhysicsList(MyDetectorConstruction *det) : G4VModularPhysicsLis
     // G4HadronPhysicsFTFP_BERT.cc      G4HadronPhysicsFTF_BIC.cc        G4HadronPhysicsQGSP_BERT_HP.cc   G4HadronPhysicsQGSP_FTFP_BERT.cc
     // G4HadronPhysicsFTFP_BERT_ATL.cc  G4HadronPhysicsINCLXX.cc         G4HadronPhysicsQGSP_BIC.cc       G4HadronPhysicsQGS_BIC.cc
     // G4HadronPhysicsFTFP_BERT_HP.cc   G4HadronPhysicsNuBeam.cc         G4HadronPhysicsQGSP_BIC_AllHP.cc G4HadronPhysicsShielding.cc
-    //RegisterPhysics(new G4HadronInelasticQBBC(verbose));
+    RegisterPhysics(new G4HadronPhysicsQGSP_BERT(verbose));
 
     //-- Ion physics
     // options: (ion_elastic)
-    //RegisterPhysics( new G4IonElasticPhysics(verbose));
+    RegisterPhysics( new G4IonElasticPhysics(verbose));
 
     // options: (ions_inelastic)
     // G4IonBinaryCascadePhysics.cc G4IonINCLXXPhysics.cc        G4IonPhysics.cc              G4IonPhysicsPHP.cc           G4IonQMDPhysics.cc
@@ -224,12 +225,15 @@ MyPhysicsList::MyPhysicsList(MyDetectorConstruction *det) : G4VModularPhysicsLis
     //RegisterPhysics( new G4NeutronTrackingCut(verbose));
     RegisterPhysics(new G4StepLimiterPhysics());
 
+    //-- Neutron 
+    RegisterPhysics( new MyNeutronPhys("neutronHP"));
+
     // options: (stopping)
     // G4StoppingPhysics.cc
     RegisterPhysics(new G4StoppingPhysics(verbose));
 
-    G4LossTableManager::Instance();
-    SetDefaultCutValue(1 * mm);
+    //G4LossTableManager::Instance();
+    //SetDefaultCutValue(1 * mm);
     //SetVerboseLevel(1);
 }
 

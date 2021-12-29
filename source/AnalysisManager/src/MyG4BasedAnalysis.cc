@@ -156,6 +156,9 @@ void MyG4BasedAnalysis::BeginOfEventAction(const G4Event *evt)
     if (verbose > 1)
         G4cout << "====>MyG4BasedAnalysis::BeginOfEventAction()" << G4endl;
 
+    if(fNumOfEvents%100==0)
+        G4cout << "====>Generate " << fNumOfEvents << " events." << G4endl;
+
     //-------
     fEvent = evt;
 

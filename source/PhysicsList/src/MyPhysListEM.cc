@@ -16,7 +16,6 @@
 #include "G4PolarizedPhotoElectricEffect.hh"
 #include "G4PolarizedPEEffectModel.hh"
 #include "G4LivermorePolarizedPhotoElectricModel.hh"
-#include "G4LivermorePolarizedPhotoElectricGDModel.hh"
 
 #include "G4ComptonScattering.hh"
 #include "G4KleinNishinaCompton.hh"
@@ -191,8 +190,7 @@ void MyPhysListEM::ConstructProcess()
             //----> 1.1.2 G4LivermorePolarizedPhotoElectricModel
             //
             G4double LivermoreHighEnergyLimit = 1.0 * GeV;
-            G4LivermorePolarizedPhotoElectricGDModel *theLivermorePhotoElectricModel = new G4LivermorePolarizedPhotoElectricGDModel();
-            //G4LivermorePolarizedPhotoElectricModel *theLivermorePhotoElectricModel = new G4LivermorePolarizedPhotoElectricModel();
+            G4LivermorePolarizedPhotoElectricModel *theLivermorePhotoElectricModel = new G4LivermorePolarizedPhotoElectricModel();
             theLivermorePhotoElectricModel->SetHighEnergyLimit(LivermoreHighEnergyLimit);
             thePhotoElectricEffect->SetEmModel(theLivermorePhotoElectricModel);
 
@@ -356,7 +354,7 @@ void MyPhysListEM::ConstructProcess()
             //--> 2.3 Ionisation and polarized ionisation
             G4eIonisation *eIoni = new G4eIonisation();
             //G4ePolarizedIonisation *eIoni = new G4ePolarizedIonisation();
-            eIoni->SetStepFunction(0.2, 100 * um);
+            eIoni->SetStepFunction(0.2, 10 * um);
 
             //----> 2.3.1 default is G4MollerBhabhaModel || G4PolarizedMollerBhabhaModel
 
@@ -682,10 +680,10 @@ void MyPhysListEM::ConstructProcess()
     // Deexcitation
     //
     G4VAtomDeexcitation *de = new G4UAtomicDeexcitation();
-    // default: all true
-    de->SetFluo(true);   // active Deexcitation, default is true
-    de->SetAuger(true); // Auger electron
-    de->SetPIXE(true);  // Particle induced X-ray emission
+    // default: all false
+    de->SetFluo(true);   // active Deexcitation, default is false
+    de->SetAuger(false); // Auger electron
+    de->SetPIXE(false);  // Particle induced X-ray emission
     G4LossTableManager::Instance()->SetAtomDeexcitation(de);
 }
 
