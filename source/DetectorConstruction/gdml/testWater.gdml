@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- 
+       Optical.gdml
+    包含: 一般材料和光学材料的定义
+    包含: 光学界面定义, boarder surface / skin surface
+    注意测试此例子，需要将入射粒子改为 opticalphoton，命令如下：
+    /gun/particle opticalphoton
+    /gun/momentum 0 0.2 1.5 eV
+    /gun/polarization 1 0 0
+    /run/beamOn 100
+-->
+
+<!DOCTYPE gdml [
+    <!ENTITY Element SYSTEM "./Material/Predefined/Element.xml">
+    <!ENTITY Materials SYSTEM "./Material/Material.xml">
+    <!ENTITY OptAir SYSTEM "./Material/Predefined/Opticals/lists/OptAir.xml">
+    <!ENTITY OptQuartz SYSTEM "./Material/Predefined/Opticals/lists/OptQuartz.xml">
+    <!ENTITY OptAcrylic SYSTEM "./Material/Predefined/Opticals/lists/OptAcrylic.xml">
+    <!ENTITY ScinLS SYSTEM "./Material/Predefined/Scintillator/lists/ScinLS.xml">
+    <!ENTITY ScinPolyethylene SYSTEM "./Material/Predefined/Scintillator/lists/ScinPolyethylene.xml">
+    <!ENTITY ScinCsI SYSTEM "./Material/Predefined/Scintillator/lists/ScinCsI.xml">
+    
+]>
+
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    <!--materials-->
+    &Element;
+    &Materials;
+    &OptAir;
+    &OptQuartz;
+    &OptAcrylic;
+    &ScinLS;
+    &ScinPolyethylene;
+    &ScinCsI;
+    
+    <define>
+
+
+        <!--水 12/17-->
+        <variable name="watertankX" value="10000"/><!--4 inch=10.16--> 
+        <variable name="watertankY" value="10000"/>
+        <variable name="watertankZ" value="1000"/>
+		<variable name="iW" value="1"/>
+
+
+
+    </define>
+
+    <solids>
+       
+        <box lunit="m" name="world" x="1000" y="1000" z="1000" />
+        
+        <box lunit="mm" name="solidWaterBox" x="watertankX" y="watertankY" z="watertankZ" />
+        <box lunit="mm" name="solidMultiWaterBox" x="watertankX*10" y="watertankY*10" z="watertankZ*30" />
+ 
+    </solids>
+
+
+    <structure>
+
+        <!--逐级定义-->
+        
+        <!--Water-->
+        <volume name="WaterVol">
+            <materialref ref="Water" />
+            <solidref ref="solidWaterBox"/>
+            <auxiliary auxtype="setColor" auxvalue="kBlue" auxunit="2" />
+        </volume>
+
+        <volume name="World">
+            <materialref ref="Vacuum" />
+            <solidref ref="world" />
+
+            <define>
+		        <variable name="iW" value="1"/>
+            </define>
+			<loop for="iW" from="1" to="5" step="1">
+			    <physvol name="WaterVol${iW}">
+			    	<volumeref ref="WaterVol"/>
+			    	<position x="0." y="0." z="watertankZ*(iW-0.5)" unit="mm"/>
+			    </physvol>
+			</loop>
+        
+        </volume>
+
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="World" />
+    </setup>
+</gdml>
