@@ -128,6 +128,7 @@ RootScan.C
 README.md
 vis.mac
 AllBkg.mac
+verbose.mac
 )
 
 foreach(script ${SCRIPTS_AND_CARD})

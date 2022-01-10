@@ -169,6 +169,13 @@ bool ConfigParticleGun(TEnv *Env)
         return false;
     }
 
+    ConfigPS.AdditionalMACCommand = Env->GetValue("AdditionalMACCommand", "0");
+    if(ConfigPS.AdditionalMACCommand != G4String("0") && !IfFileExist(ConfigPS.AdditionalMACCommand))
+    {
+        G4cerr << "Error!!! MAC File \" " << ConfigPS.AdditionalMACCommand << " \" NOT FOUND!!!"  << G4endl;
+        return false;
+    }
+
     ConfigPS.ParticleGunParameters = SplitStr(Env->GetValue("PGParameters", ""), ",");
     if(ConfigPS.ParticleGunParameters[0] == "")
         ConfigPS.ParticleGunParameters.clear();
@@ -383,6 +390,11 @@ int main(int argc, char **argv)
     {
         if (ConfigPS.PGEnable)
         {
+            if(ConfigPS.AdditionalMACCommand != G4String("0"))
+            {
+                G4String command = "/control/execute ";
+                UImanager->ApplyCommand(command + ConfigPS.AdditionalMACCommand);
+            }
             runManager->GenEvents(ConfigPS.GenEvents, ConfigPS.GenValidEvents);
         }
         if (ConfigPS.PSEnable)

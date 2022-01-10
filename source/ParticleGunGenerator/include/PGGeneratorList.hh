@@ -25,6 +25,7 @@ struct PGPSConfig
     G4int GenValidEvents;
     bool OnlyValid;
     std::vector<std::string> ParticleGunParameters;
+    G4String AdditionalMACCommand;
     //Simple Particle Gun
     G4String ParticleName;
     G4double ParticleEnergy;
