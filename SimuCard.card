@@ -4,6 +4,11 @@ OutputFile: sim.root
 OutputLevel: 1
 #AdditionalMACCommand: verbose.mac
 
+### --> CSV文件能谱抽样
+PGType: CSV
+PGParameters: -n,gamma,/mnt/d/WSLFiles/CEvNS/data.csv
+GenEvents: 50000
+
 ### --> Particle Gun 产生
 #PGType: Simple
 #PGName: neutron
@@ -14,9 +19,9 @@ OutputLevel: 1
 #GenEvents: 50
 
 ### --> 中子本底抽样
-PGType: PGN
-PGParameters: 0.0379
-GenEvents: 50
+#PGType: PGN
+#PGParameters: 0.0379
+#GenEvents: 50
 
 ### --> 调用 ExGenerator
 #ExGPSMacFile: AllBkg.mac

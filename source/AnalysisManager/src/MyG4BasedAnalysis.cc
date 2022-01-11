@@ -89,6 +89,9 @@ void MyG4BasedAnalysis::BeginOfRunAction()
     analysisManager->SetVerboseLevel(1);
     analysisManager->OpenFile(fFileName);
 
+    fPGGeneratorList = PGGeneratorList::GetInstance();
+    fPGGenerator = fPGGeneratorList->GetGenerator();
+
     //-------
     //#ANALYSIS 2. 定义Ntuple结构
 
@@ -110,6 +113,13 @@ void MyG4BasedAnalysis::BeginOfRunAction()
         analysisManager->CreateNtupleDColumn("engpn");
         analysisManager->CreateNtupleDColumn("engnn");
         analysisManager->CreateNtupleDColumn("engnp");
+        analysisManager->CreateNtupleDColumn("TruthEnergy");
+        analysisManager->CreateNtupleDColumn("TruthPosX");
+        analysisManager->CreateNtupleDColumn("TruthPosY");
+        analysisManager->CreateNtupleDColumn("TruthPosZ");
+        analysisManager->CreateNtupleDColumn("TruthMomDirX");
+        analysisManager->CreateNtupleDColumn("TruthMomDirY");
+        analysisManager->CreateNtupleDColumn("TruthMomDirZ");
     }
     else
     {
@@ -121,6 +131,12 @@ void MyG4BasedAnalysis::BeginOfRunAction()
         analysisManager->CreateNtupleDColumn("countnnd");
         analysisManager->CreateNtupleDColumn("countnpu");
         analysisManager->CreateNtupleDColumn("countnpd");
+        analysisManager->CreateNtupleDColumn("TruthPosX");
+        analysisManager->CreateNtupleDColumn("TruthPosY");
+        analysisManager->CreateNtupleDColumn("TruthPosZ");
+        analysisManager->CreateNtupleDColumn("TruthMomDirX");
+        analysisManager->CreateNtupleDColumn("TruthMomDirY");
+        analysisManager->CreateNtupleDColumn("TruthMomDirZ");
     }
     analysisManager->FinishNtuple();
 
@@ -215,6 +231,26 @@ void MyG4BasedAnalysis::EndOfEventAction(const G4Event *)
         analysisManager->FillNtupleDColumn(1, 6, gamma_countnpu);
         analysisManager->FillNtupleDColumn(1, 7, gamma_countnpd);
     }
+    //保存Truth信息
+    fTruthEnergy = fPGGenerator->GetParticleEnergy();
+    fTruthPosX = fPGGenerator->GetParticlePosition()[0];
+    fTruthPosY = fPGGenerator->GetParticlePosition()[1];
+    fTruthPosZ = fPGGenerator->GetParticlePosition()[2];
+    fTruthMomDirX = fPGGenerator->GetParticleMomentumDirection()[0];
+    fTruthMomDirY = fPGGenerator->GetParticleMomentumDirection()[1];
+    fTruthMomDirZ = fPGGenerator->GetParticleMomentumDirection()[2];
+
+    Int_t TruthOutColumn = 4;
+    if (fOutputLevel != 1)
+        TruthOutColumn = 8;
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn    , fTruthEnergy);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 1, fTruthPosX);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 2, fTruthPosY);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 3, fTruthPosZ);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 4, fTruthMomDirX);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 5, fTruthMomDirY);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 6, fTruthMomDirZ);
+
     analysisManager->AddNtupleRow(1); 
     ++fNumOfEvents;
 

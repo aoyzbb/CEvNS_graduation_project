@@ -5,6 +5,7 @@
 
 #include "MyAnalysisMessenger.hh"
 #include "MyAnalysisManager.hh"
+#include "PGGeneratorList.hh"
 
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithAnInteger.hh"
