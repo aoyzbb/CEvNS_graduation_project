@@ -57,7 +57,7 @@ void CSVInputEnergy::LoadCSVFile()
     G4cout << "Load " << EnergyMapVector.size() << " energy point" << G4endl;
     std::sort(EnergyMapVector.begin(), EnergyMapVector.end(), CSVInputEnergy::EnergySort);
     fNumOfPoint = EnergyMapVector.size();
-    if(fNumOfPoint > 500)
+    if(fNumOfPoint > 1000)
     {
         G4cerr << fClassName << ": Error!!! Input number of energy points large than 1000. Pleace enlaege the array size!" << G4endl;
         exit(EXIT_FAILURE);
