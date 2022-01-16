@@ -17,6 +17,10 @@ G4double PGGenerator::ConvertStrToDouble(std::string Str)
         throw "ConvertStrToDouble: Input str is not a vaild number!";
     return std::stod(Str);
 }
+G4ThreeVector PGGenerator::ConvertStrToV3(std::string Str1, std::string Str2, std::string Str3)
+{
+    return G4ThreeVector(ConvertStrToDouble(Str1), ConvertStrToDouble(Str2), ConvertStrToDouble(Str3));
+}
 
 std::pair<G4ThreeVector, G4ThreeVector> PGGenerator::GenPosAndMomDir()
 {

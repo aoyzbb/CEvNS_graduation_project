@@ -87,6 +87,32 @@ void CSVInputEnergy::Initialize(std::vector<std::string> PGParameters)
                     ++iP;
                 }
             }
+            if (PGParameters[iP] == "-pos")
+            {
+                if(NumOfPars > iP+3)
+                {
+                    fParticlePosition = ConvertStrToV3(PGParameters[iP+1], PGParameters[iP+2], PGParameters[iP+3]) * mm;
+                    fRandomShoot = false;
+                    iP+=3;
+                }
+            }
+            if (PGParameters[iP] == "-mom")
+            {
+                if(NumOfPars > iP+3)
+                {
+                    fParticleMomentumDirection = ConvertStrToV3(PGParameters[iP+1], PGParameters[iP+2], PGParameters[iP+3]);
+                    fRandomShoot = false;
+                    iP+=3;
+                }
+            }
+            if (PGParameters[iP] == "-pol")
+            {
+                if(NumOfPars > iP+3)
+                {
+                    fParticlePolarization = ConvertStrToV3(PGParameters[iP+1], PGParameters[iP+2], PGParameters[iP+3]);
+                    iP+=3;
+                }
+            }
         }
         else
         {
