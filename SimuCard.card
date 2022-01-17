@@ -1,6 +1,6 @@
 DetectorGDML: gdml/main.gdml
 
-RandomSeed : 2022
+RandomSeed: 2022
 OutputFile: sim.root
 OutputLevel: 1
 #AdditionalMACCommand: verbose.mac
