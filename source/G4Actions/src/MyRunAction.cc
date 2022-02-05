@@ -7,7 +7,8 @@
 #include "G4RunManager.hh"
 #include "Verbose.hh"
 
-#include "g4root.hh"
+//#include "g4root.hh"
+#include "G4AnalysisManager.hh"
 
 #include "MyRunAction.hh"
 #include "MyDetectorConstruction.hh"

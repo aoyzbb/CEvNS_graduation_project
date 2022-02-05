@@ -459,7 +459,7 @@ void MyPhysListOp::
     //G4Scintillation::SetScintillationTrackInfo(scintillationTrackInfo);
 }
 
-void MyPhysListOp::SetTrackSecondariesFirst(G4OpticalProcessIndex index,
+void MyPhysListOp::SetTrackSecondariesFirst(G4OpticalParameters index,
                                             G4bool trackSecondariesFirst)
 {
     if (index >= kNoProcess)
@@ -495,7 +495,7 @@ void MyPhysListOp::SetScintillationStackPhotons(G4bool stackingFlag)
     fScintillationStackPhotons = stackingFlag;
 }
 
-void MyPhysListOp::Configure(G4OpticalProcessIndex index, G4bool isUse)
+void MyPhysListOp::Configure(G4OpticalParameters index, G4bool isUse)
 {
     // Configure the physics constructor to use/not use a selected process.
     // This method can only be called in PreInit> phase (before execution of

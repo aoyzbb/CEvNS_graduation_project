@@ -4,7 +4,8 @@
 //
 
 #include "MyG4BasedAnalysis.hh"
-#include "g4root.hh"
+//#include "g4root.hh"
+#include "G4AnalysisManager.hh"
 #include "Verbose.hh"
 
 #include "G4AntiNeutrinoE.hh"

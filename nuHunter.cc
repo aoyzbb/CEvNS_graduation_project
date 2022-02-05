@@ -323,9 +323,9 @@ int main(int argc, char **argv)
     {
         for(int iA = 1; iA < argc; ++iA)
         {
-            if(G4String(argv[iA][0]) == G4String("-"))
+            if(std::string(argv[iA])[0] == std::string("-"))
             {
-                if(G4String(argv[iA]) == G4String("-v"))
+                if(std::string(argv[iA]) == std::string("-v"))
                 {
                     G4cout << " Use interactive mode" << G4endl;
                     ui = new G4UIExecutive(argc, argv);

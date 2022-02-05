@@ -3,6 +3,9 @@
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 project(nuHunterproj)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
 ##----------------------------------------------------------------------------
 ## Get git commit ID
 #SET(ENV{GIT_DIR} ${PROJECT_SOURCE_DIR}/.git)
@@ -64,7 +67,7 @@ if(ROOT_FOUND)
   endif()
 endif()
 
-#include(${ROOT_USE_FILE})
+include(${ROOT_USE_FILE})
 
 #----------------------------------------------------------------------------
 # Find QT (required package)   
@@ -79,6 +82,7 @@ include_directories(${ROOTSYS}/include)
 
 MESSAGE( ${PROJECT_SOURCE_DIR} )
 MESSAGE( ${CMAKE_SOURCE_DIR} )
+include_directories(${PROJECT_SOURCE_DIR}/source/OldG4Class/include)
 include_directories(${PROJECT_SOURCE_DIR}/source/G4Actions/include)
 include_directories(${PROJECT_SOURCE_DIR}/source/PhysicsList/include)
 include_directories(${PROJECT_SOURCE_DIR}/source/AnalysisManager/include)

@@ -1496,7 +1496,8 @@ void ExGeneralParticleSourceMessenger::SetNewValue(G4UIcommand *command, G4Strin
 	  G4int idx=0;
 	  int seeds[100];
 	  G4String vl;
-	  while(!(vl=next()).isNull())
+	  //while((vl=next())!=G4String(""))
+	  while(!(vl=next()).empty())
 	  { seeds[idx] = (long)(StoI(vl)); idx++; }
 	  if(idx<2)
 	  { G4cerr << "/gps/radZA should have two integers. Command ignored." << G4endl; }
@@ -1988,7 +1989,7 @@ void ExGeneralParticleSourceMessenger::IonCommand(G4String newValues)
 		fAtomicNumber = StoI(next());
 		fAtomicMass = StoI(next());
 		G4String sQ = next();
-		if (sQ.isNull())
+		if (sQ.empty())
 		{
 			fIonCharge = fAtomicNumber;
 		}
@@ -1996,7 +1997,7 @@ void ExGeneralParticleSourceMessenger::IonCommand(G4String newValues)
 		{
 			fIonCharge = StoI(sQ);
 			sQ = next();
-			if (sQ.isNull())
+			if (sQ.empty())
 			{
 				fIonExciteEnergy = 0.0;
 			}
@@ -2035,12 +2036,12 @@ void ExGeneralParticleSourceMessenger::IonLvlCommand(G4String newValues)
 		fAtomicNumberL = StoI(next());
 		fAtomicMassL = StoI(next());
 		G4String sQ = next();
-		if (sQ.isNull()) {
+		if (sQ.empty()) {
 			fIonChargeL = fAtomicNumberL;
 		} else {
 			fIonChargeL = StoI(sQ);
 			sQ = next();
-			if (sQ.isNull()) {
+			if (sQ.empty()) {
 				fIonEnergyLevel = 0;
 			} else {
 				fIonEnergyLevel = StoI(sQ);
