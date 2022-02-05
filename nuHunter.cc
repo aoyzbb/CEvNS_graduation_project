@@ -49,6 +49,7 @@
 #include "G4StepLimiterPhysics.hh"
 #include "G4ThreeVector.hh"
 #include "Randomize.hh"
+#include "TRandom.h"
 
 #include "TSystem.h"
 #include "TString.h"
@@ -307,6 +308,11 @@ bool ArgListControl(G4String InitCard)
         G4cerr << "Error!!! Output File name \" " << ControlOutput.OutputFile << " \" Should end with \" .root \"!!!"  << G4endl;
         return false;
     }
+
+    //Set Random Seed
+    G4int RandomSeed = Env->GetValue("RandomSeed", 2022);
+    G4Random::setTheSeed(RandomSeed);
+    gRandom->SetSeed(RandomSeed);
 
     return true;
 }

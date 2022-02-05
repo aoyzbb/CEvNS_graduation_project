@@ -1,6 +1,7 @@
 #include "GPSFromMAC.hh"
 #include "SimpleParticleGun.hh"
 #include "PGNeutron.hh"
+#include "CSVInputEnergy.hh"
 
 #include "PGGeneratorList.hh"
 
@@ -11,6 +12,7 @@ PGGeneratorList::PGGeneratorList():fValid(false)
     fMapGeneratorPtr[G4String("GPS")]  = new GPSFromMAC();
     fMapGeneratorPtr[G4String("Simple")]  = new SimpleParticleGun();
     fMapGeneratorPtr[G4String("PGN")]  = new PGNeutron();
+    fMapGeneratorPtr[G4String("CSV")]  = new CSVInputEnergy();
 }
 
 PGGeneratorList::~PGGeneratorList(){

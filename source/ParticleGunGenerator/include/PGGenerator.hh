@@ -41,7 +41,8 @@ public:
     virtual inline G4int GetGenerateNumber(){return fGenNumber;}
 
     G4double ConvertStrToDouble(std::string);
-    //std::pair<G4ThreeVector, G4ThreeVector> GenPosAndMomDir();
+    G4ThreeVector ConvertStrToV3(std::string, std::string, std::string);
+    std::pair<G4ThreeVector, G4ThreeVector> GenPosAndMomDir();
     inline static bool mySort(double i, double j){return (i < j);}
 
 private:
@@ -55,6 +56,9 @@ private:
     G4int fTypeFlag;
     G4int fGenNumber;
     G4int fEvtFlag;
+
+    G4double fBoxLength;
+    G4double fBallRadius;
 };
 
 #endif

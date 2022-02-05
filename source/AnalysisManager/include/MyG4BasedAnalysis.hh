@@ -12,6 +12,8 @@
 #include "G4Event.hh"
 #include <iomanip>
 
+#include "PGGeneratorList.hh"
+
 class TH1F;
 class MyDetectorConstruction;
 class MyEvtAction;
@@ -51,6 +53,8 @@ private:
     MyRunAction *fRunAction;
     MyEvtAction *fEvtAction;
     G4int fNumOfEvents;
+    PGGenerator* fPGGenerator;
+    PGGeneratorList* fPGGeneratorList;
 
     const G4Event *fEvent;
 
@@ -77,6 +81,15 @@ private:
     G4double engdep1; //pn
     G4double engdep2; //nn
     G4double engdep3; //np
+
+    //Truth 信息
+    G4double fTruthEnergy;
+    G4double fTruthPosX;
+    G4double fTruthPosY;
+    G4double fTruthPosZ;
+    G4double fTruthMomDirX;
+    G4double fTruthMomDirY;
+    G4double fTruthMomDirZ;
     
 };
 
