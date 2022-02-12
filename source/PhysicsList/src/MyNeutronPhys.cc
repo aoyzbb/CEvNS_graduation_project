@@ -20,17 +20,17 @@
 #include "G4ParticleHPElastic.hh"
 #include "G4ParticleHPThermalScattering.hh"
 
-#include "G4NeutronInelasticProcess.hh"
+#include "G4HadronInelasticProcess.hh"		//***
 #include "G4ParticleHPInelasticData.hh"
 #include "G4ParticleHPInelastic.hh"
 
-#include "G4HadronCaptureProcess.hh"
+#include "G4NeutronCaptureProcess.hh"		//***
 #include "G4ParticleHPCaptureData.hh"
 #include "G4ParticleHPCapture.hh"
 
-#include "G4NeutronInelasticCrossSection.hh"
+//#include "G4NeutronInelasticCrossSection.hh"
 #include "G4HadronPhysicsQGSP_BERT.hh"
-#include "G4HadronFissionProcess.hh"
+#include "G4NeutronFissionProcess.hh"		//***
 #include "G4ParticleHPFissionData.hh"
 #include "G4ParticleHPFission.hh"
 
@@ -41,19 +41,19 @@
 #include "G4ElasticHadrNucleusHE.hh"
 
 // Inelastic processes:
-#include "G4PionPlusInelasticProcess.hh"
-#include "G4PionMinusInelasticProcess.hh"
-#include "G4KaonPlusInelasticProcess.hh"
-#include "G4KaonZeroSInelasticProcess.hh"
-#include "G4KaonZeroLInelasticProcess.hh"
-#include "G4KaonMinusInelasticProcess.hh"
-#include "G4ProtonInelasticProcess.hh"
-#include "G4AntiProtonInelasticProcess.hh"
-#include "G4NeutronInelasticProcess.hh"
-#include "G4AntiNeutronInelasticProcess.hh"
-#include "G4DeuteronInelasticProcess.hh"
-#include "G4TritonInelasticProcess.hh"
-#include "G4AlphaInelasticProcess.hh"
+//#include "G4PionPlusInelasticProcess.hh"
+//#include "G4PionMinusInelasticProcess.hh"
+//#include "G4KaonPlusInelasticProcess.hh"
+//#include "G4KaonZeroSInelasticProcess.hh"
+//#include "G4KaonZeroLInelasticProcess.hh"
+//#include "G4KaonMinusInelasticProcess.hh"
+//#include "G4ProtonInelasticProcess.hh"
+//#include "G4AntiProtonInelasticProcess.hh"
+//#include "G4HadronInelasticProcess.hh"
+//#include "G4AntiNeutronInelasticProcess.hh"
+//#include "G4DeuteronInelasticProcess.hh"
+//#include "G4TritonInelasticProcess.hh"
+//#include "G4AlphaInelasticProcess.hh"
 
 // High energy FTFP model and Bertini cascade
 #include "G4FTFModel.hh"
@@ -73,14 +73,14 @@
 #include "G4AntiNuclElastic.hh"
 
 #include "G4CrossSectionInelastic.hh"
-#include "G4PiNuclearCrossSection.hh"
-#include "G4CrossSectionPairGG.hh"
+//#include "G4PiNuclearCrossSection.hh"
+//#include "G4CrossSectionPairGG.hh"
 #include "G4BGGNucleonInelasticXS.hh"
 #include "G4ComponentAntiNuclNuclearXS.hh"
 #include "G4ComponentGGNuclNuclXsc.hh"
 
 #include "G4HadronElastic.hh"
-#include "G4HadronCaptureProcess.hh"
+#include "G4NeutronCaptureProcess.hh"
 
 // Neutron high-precision models: <20 MeV
 #include "G4ParticleHPElastic.hh"
@@ -93,9 +93,9 @@
 #include "G4NeutronRadCapture.hh"
 
 // Stopping processes
-#include "G4PiMinusAbsorptionBertini.hh"
-#include "G4KaonMinusAbsorptionBertini.hh"
-#include "G4AntiProtonAbsorptionFritiof.hh"
+//#include "G4PiMinusAbsorptionBertini.hh"
+//#include "G4KaonMinusAbsorptionBertini.hh"
+//#include "G4AntiProtonAbsorptionFritiof.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -166,7 +166,8 @@ void MyNeutronPhys::ConstructProcess()
 	pManager->AddDiscreteProcess(theElasticProcess);
 
 	//-- inelastic Physics
-	G4NeutronInelasticProcess *theInelasticProcess = new G4NeutronInelasticProcess("inelastic");
+	G4HadronInelasticProcess *theInelasticProcess = new G4HadronInelasticProcess("neutronInelastic", G4Neutron::Definition());
+	//G4HadronInelasticProcess *theInelasticProcess = new G4HadronInelasticProcess("inelastic");
 	theInelasticProcess->AddDataSet(new G4BGGNucleonInelasticXS(G4Neutron::Neutron()));
 
 	G4FTFModel * theStringModel = new G4FTFModel;
@@ -196,7 +197,7 @@ void MyNeutronPhys::ConstructProcess()
 	pManager->AddDiscreteProcess(theInelasticProcess);
 
 	//-- n-Capture Physics
-	G4HadronCaptureProcess *theCaptureProcess = new G4HadronCaptureProcess;
+	G4NeutronCaptureProcess *theCaptureProcess = new G4NeutronCaptureProcess;
 	theCaptureProcess->AddDataSet(new G4ParticleHPCaptureData);
 
 	G4NeutronRadCapture *theCaptureModel = new G4NeutronRadCapture;
@@ -207,7 +208,7 @@ void MyNeutronPhys::ConstructProcess()
 
 	//-- nFission
 	//
-	G4HadronFissionProcess *theFissionProcess = new G4HadronFissionProcess();
+	G4NeutronFissionProcess *theFissionProcess = new G4NeutronFissionProcess();
 	theFissionProcess->AddDataSet(new G4ParticleHPFissionData());
 	G4ParticleHPFission *theNeutronFissionModel = new G4ParticleHPFission();
 	theFissionProcess->RegisterMe(theNeutronFissionModel);
