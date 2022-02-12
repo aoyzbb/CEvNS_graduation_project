@@ -13,16 +13,16 @@
 #include "G4LivermorePhotoElectricModel.hh"
 #include "G4PenelopePhotoElectricModel.hh"
 //#
-#include "G4PolarizedPhotoElectricEffect.hh"
-#include "G4PolarizedPEEffectModel.hh"
-#include "G4LivermorePolarizedPhotoElectricModel.hh"
+//#include "G4PolarizedPhotoElectricEffect.hh"
+//#include "G4PolarizedPEEffectModel.hh"
+//#include "G4LivermorePolarizedPhotoElectricModel.hh"
 
 #include "G4ComptonScattering.hh"
 #include "G4KleinNishinaCompton.hh"
 #include "G4KleinNishinaModel.hh"
-#include "G4HeatedKleinNishinaCompton.hh"
+//#include "G4HeatedKleinNishinaCompton.hh"
 #include "G4LivermoreComptonModel.hh"
-#include "G4LivermoreComptonModifiedModel.hh"
+//#include "G4LivermoreComptonModifiedModel.hh"
 #include "G4LowEPComptonModel.hh"
 #include "G4PenelopeComptonModel.hh"
 //#
@@ -35,7 +35,7 @@
 #include "G4BetheHeitlerModel.hh"
 #include "G4PairProductionRelModel.hh"
 #include "G4LivermoreGammaConversionModel.hh"
-#include "G4LivermoreGammaConversionModelRC.hh"
+//#include "G4LivermoreGammaConversionModelRC.hh"
 #include "G4PenelopeGammaConversionModel.hh"
 //#
 #include "G4PolarizedGammaConversion.hh"
@@ -67,8 +67,8 @@
 #include "G4PAIModel.hh"
 #include "G4PAIPhotModel.hh"
 //#
-#include "G4ePolarizedIonisation.hh"
-#include "G4PolarizedMollerBhabhaModel.hh"
+//#include "G4ePolarizedIonisation.hh"
+//#include "G4PolarizedMollerBhabhaModel.hh"
 
 #include "G4eBremsstrahlung.hh"
 #include "G4SeltzerBergerModel.hh"
@@ -76,8 +76,8 @@
 #include "G4LivermoreBremsstrahlungModel.hh"
 #include "G4PenelopeBremsstrahlungModel.hh"
 //#
-#include "G4ePolarizedBremsstrahlung.hh"
-#include "G4ePolarizedBremsstrahlungModel.hh"
+//#include "G4ePolarizedBremsstrahlung.hh"
+//#include "G4ePolarizedBremsstrahlungModel.hh"
 
 // positron processes
 #include "G4eplusAnnihilation.hh"
@@ -102,7 +102,7 @@
 // distrubution
 #include "G4UniversalFluctuation.hh"
 //
-#include "G4EmProcessOptions.hh"
+//#include "G4EmProcessOptions.hh"
 #include "G4MscStepLimitType.hh"
 
 #include "G4LossTableManager.hh"
@@ -178,8 +178,8 @@ void MyPhysListEM::ConstructProcess()
             //------------
             //
             //--> 1.1 photoelectric effect || polarizedPhotoElectric
-            //G4PhotoElectricEffect *thePhotoElectricEffect = new G4PhotoElectricEffect();
-            G4PolarizedPhotoElectricEffect *thePhotoElectricEffect = new G4PolarizedPhotoElectricEffect();
+            G4PhotoElectricEffect *thePhotoElectricEffect = new G4PhotoElectricEffect();
+            //G4PolarizedPhotoElectricEffect *thePhotoElectricEffect = new G4PolarizedPhotoElectricEffect();
 
             //----> 1.1.0 default model: G4PEEffectFluoModel || G4PolarizedPEEffectModel
 
@@ -189,10 +189,10 @@ void MyPhysListEM::ConstructProcess()
 
             //----> 1.1.2 G4LivermorePolarizedPhotoElectricModel
             //
-            G4double LivermoreHighEnergyLimit = 1.0 * GeV;
-            G4LivermorePolarizedPhotoElectricModel *theLivermorePhotoElectricModel = new G4LivermorePolarizedPhotoElectricModel();
-            theLivermorePhotoElectricModel->SetHighEnergyLimit(LivermoreHighEnergyLimit);
-            thePhotoElectricEffect->SetEmModel(theLivermorePhotoElectricModel);
+            //G4double LivermoreHighEnergyLimit = 1.0 * GeV;
+            //G4LivermorePolarizedPhotoElectricModel *theLivermorePhotoElectricModel = new G4LivermorePolarizedPhotoElectricModel();
+            //theLivermorePhotoElectricModel->SetHighEnergyLimit(LivermoreHighEnergyLimit);
+            //thePhotoElectricEffect->SetEmModel(theLivermorePhotoElectricModel);
 
             //----> 1.1.3 G4PenelopePhotoElectricModel
             //

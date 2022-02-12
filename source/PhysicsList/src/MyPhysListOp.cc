@@ -43,7 +43,7 @@ MyPhysListOp::MyPhysListOp(G4int verbose, const G4String &name)
       fScintillationStackPhotons(true)
 {
     verboseLevel = verbose;
-    fMessenger = new G4OpticalPhysicsMessenger(this);
+    //fMessenger = new G4OpticalPhysicsMessenger(this);
 
     for (G4int i = 0; i < kNoProcess; i++)
     {
@@ -56,7 +56,7 @@ MyPhysListOp::MyPhysListOp(G4int verbose, const G4String &name)
 
 MyPhysListOp::~MyPhysListOp()
 {
-    delete fMessenger;
+    //delete fMessenger;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

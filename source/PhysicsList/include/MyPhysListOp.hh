@@ -45,7 +45,7 @@
 #include "globals.hh"
 
 #include "G4OpticalParameters.hh"
-#include "G4OpticalPhysicsMessenger.hh"
+//#include "G4OpticalPhysicsMessenger.hh"
 #include "G4OpticalSurface.hh"
 #include "G4OpticalPhysics.hh"
 
@@ -100,7 +100,7 @@ private:
     void PrintStatistics() const;
 
     // messenger
-    G4OpticalPhysicsMessenger *fMessenger;
+    //G4OpticalPhysicsMessenger *fMessenger;
 
     // The vector of process configuration
     std::vector<G4bool> fProcessUse;

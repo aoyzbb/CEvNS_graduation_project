@@ -31,7 +31,7 @@
 #include "G4EmDNAPhysics_option4.hh"
 #include "G4EmDNAPhysics_option5.hh"
 #include "G4EmDNAPhysics_option7.hh"
-#include "G4EmLEPTSPhysics.hh"
+//#include "G4EmLEPTSPhysics.hh"
 #include "G4EmLivermorePhysics.hh"
 #include "G4EmLivermorePolarizedPhysics.hh"
 #include "G4EmLowEPPhysics.hh"
