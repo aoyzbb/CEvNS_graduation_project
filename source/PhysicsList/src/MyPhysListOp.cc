@@ -171,19 +171,19 @@ namespace UIhelpers
         sccmd1.SetParameterName("time", false);
         sccmd1.SetStates(G4State_Idle);
 
-        G4GenericMessenger::Command &sccmd2 = mess->DeclareMethod("setYieldFactor",
-                                                                  &G4Scintillation::SetScintillationYieldFactor,
-                                                                  "Set scintillation yield factor");
-        sccmd2.SetParameterName("factor", false);
+        //G4GenericMessenger::Command &sccmd2 = mess->DeclareMethod("setYieldFactor",
+        //                                                          &G4Scintillation::SetScintillationYieldFactor,
+        //                                                          "Set scintillation yield factor");
+        //sccmd2.SetParameterName("factor", false);
         //sccmd2.SetRange("factor>=0."); //LIMITATION: w/ DeclareMethod range checking does not work
-        sccmd2.SetStates(G4State_Idle);
+        //sccmd2.SetStates(G4State_Idle);
 
-        G4GenericMessenger::Command &sccmd3 = mess->DeclareMethod("setExcitationRatio",
-                                                                  &G4Scintillation::SetScintillationExcitationRatio,
-                                                                  "Set scintillation excitation ratio");
-        sccmd3.SetParameterName("ratio", false);
+        //G4GenericMessenger::Command &sccmd3 = mess->DeclareMethod("setExcitationRatio",
+        //                                                          &G4Scintillation::SetScintillationExcitationRatio,
+        //                                                          "Set scintillation excitation ratio");
+        //sccmd3.SetParameterName("ratio", false);
         //sccmd3.SetRange("ratio>=0.&&ratio<=1.");//LIMITATION: w/ DeclareMethod range checking does not work
-        sccmd3.SetStates(G4State_Idle);
+        //sccmd3.SetStates(G4State_Idle);
 
         G4GenericMessenger::Command &sccmd4 = mess->DeclareMethod("setByParticleType",
                                                                   &G4Scintillation::SetScintillationByParticleType,
@@ -300,8 +300,8 @@ void MyPhysListOp::ConstructProcess()
     }
 
     G4Scintillation *ScintillationProcess = new G4Scintillation();
-    ScintillationProcess->SetScintillationYieldFactor(fYieldFactor);
-    ScintillationProcess->SetScintillationExcitationRatio(fExcitationRatio);
+    //ScintillationProcess->SetScintillationYieldFactor(fYieldFactor);
+    //ScintillationProcess->SetScintillationExcitationRatio(fExcitationRatio);
     ScintillationProcess->SetFiniteRiseTime(fFiniteRiseTime);
     ScintillationProcess->SetScintillationByParticleType(fScintillationByParticleType);
     ScintillationProcess->SetScintillationTrackInfo(fScintillationTrackInfo);
@@ -318,15 +318,15 @@ void MyPhysListOp::ConstructProcess()
     // scintillation process for alpha:
     G4Scintillation *theScintProcessAlpha = new G4Scintillation("Scintillation");
     theScintProcessAlpha->SetTrackSecondariesFirst(true);
-    theScintProcessAlpha->SetScintillationYieldFactor(1.1);
-    theScintProcessAlpha->SetScintillationExcitationRatio(1.0);
+    //theScintProcessAlpha->SetScintillationYieldFactor(1.1);
+    //theScintProcessAlpha->SetScintillationExcitationRatio(1.0);
     theScintProcessAlpha->SetVerboseLevel(verboseLevel);
 
     // scintillation process for heavy nuclei
     G4Scintillation *theScintProcessNuc = new G4Scintillation("Scintillation");
     theScintProcessNuc->SetTrackSecondariesFirst(true);
-    theScintProcessNuc->SetScintillationYieldFactor(0.2);
-    theScintProcessNuc->SetScintillationExcitationRatio(1.0);
+    //theScintProcessNuc->SetScintillationYieldFactor(0.2);
+    //theScintProcessNuc->SetScintillationExcitationRatio(1.0);
     theScintProcessNuc->SetVerboseLevel(verboseLevel);
 
     //--------------------------------------------------
@@ -459,7 +459,7 @@ void MyPhysListOp::
     //G4Scintillation::SetScintillationTrackInfo(scintillationTrackInfo);
 }
 
-void MyPhysListOp::SetTrackSecondariesFirst(G4OpticalParameters index,
+void MyPhysListOp::SetTrackSecondariesFirst(G4OpticalProcessIndex index,
                                             G4bool trackSecondariesFirst)
 {
     if (index >= kNoProcess)
@@ -495,7 +495,7 @@ void MyPhysListOp::SetScintillationStackPhotons(G4bool stackingFlag)
     fScintillationStackPhotons = stackingFlag;
 }
 
-void MyPhysListOp::Configure(G4OpticalParameters index, G4bool isUse)
+void MyPhysListOp::Configure(G4OpticalProcessIndex index, G4bool isUse)
 {
     // Configure the physics constructor to use/not use a selected process.
     // This method can only be called in PreInit> phase (before execution of

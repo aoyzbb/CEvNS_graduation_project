@@ -75,7 +75,7 @@ private:
 
 public:
     // configure MyPhysListOp builder
-    void Configure(G4OpticalParameters, G4bool);
+    void Configure(G4OpticalProcessIndex, G4bool);
 
     void SetMaxNumPhotonsPerStep(G4int);
     void SetMaxBetaChangePerStep(G4double);
@@ -87,7 +87,7 @@ public:
     void SetScintillationTrackInfo(G4bool);
     //void AddScintillationSaturation(G4EmSaturation* );
 
-    void SetTrackSecondariesFirst(G4OpticalParameters, G4bool);
+    void SetTrackSecondariesFirst(G4OpticalProcessIndex, G4bool);
     void SetFiniteRiseTime(G4bool);
 
     void SetCerenkovStackPhotons(G4bool);
