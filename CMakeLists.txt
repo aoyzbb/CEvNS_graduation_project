@@ -62,12 +62,14 @@ find_package(ROOT REQUIRED)
 # check ROOT version
 if(ROOT_FOUND)
   STRING(REGEX MATCH "6.*" VERSION6MATCH ${ROOT_VERSION})
+  message(STATUS "version of root: ${ROOT_VERSION}")
   if(NOT VERSION6MATCH)
     message(FATAL_ERROR "--> ERROR: ROOT 6 is required but not found")
   endif()
 endif()
 
 include(${ROOT_USE_FILE})
+MESSAGE(STATUS "ROOT_USE_FILE: ${ROOT_USE_FILE}")
 
 #----------------------------------------------------------------------------
 # Find QT (required package)   
@@ -118,7 +120,7 @@ target_link_libraries(nuHunter SimEventDict ${Geant4_LIBRARIES} ${ROOT_LIBRARIES
 
 file(GLOB_RECURSE gdml_list RELATIVE ${PROJECT_SOURCE_DIR}/source/DetectorConstruction/gdml "./*ml")
 foreach(gdml ${gdml_list})
-  MESSAGE( ${gdml} )
+  #MESSAGE( ${gdml} )
 	configure_file(
 		${PROJECT_SOURCE_DIR}/source/DetectorConstruction/gdml/${gdml}
 		${PROJECT_BINARY_DIR}/gdml/${gdml}

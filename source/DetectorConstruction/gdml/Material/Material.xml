@@ -9,7 +9,7 @@
 	7. 非金属： Rock, Concrete, Ceramics, Wood
 	8. 探测器：Epoxy, G10, FR4, Kapton, Bakelite, Mylar, AlMylar(铝膜)
 	9. 晶体：BGO, LSO, CsI, NaI, LaBr3, GAGG, LYSO
-	10. 中微子实验： LS, GdLS, Acrylic, ESR, Tyvek, MineralOil
+	10. 中微子实验： LS, GdLS, Acrylic, ESR, Tyvek, MineralOil ,石蜡
 
 	注： 混合气密度计算：设两种物质密度分别为ρ1、ρ2，质量混合比分别为a%、b%，混合质量为M，则V1=Ma%/ρ1，V2=Mb%/ρ2，混合密度ρ=M/(V1+V2)=ρ1ρ2/(ρ2a%+ρ1b%)
 		混合气密度计算：设两种物质密度分别为ρ1、ρ2，体积混合比分别为a%、b%，混合体积为V，则M1=ρ1*V*a%，M2=ρ2*V*b%，混合密度ρ=(M1+M2)/V=ρ1a%+ρ2b%
@@ -412,6 +412,12 @@
 		<D value="2.2" />  
 		<composite n="4" ref="elFluorine" />
 		<composite n="2" ref="elCarbon" />
+	</material>
+
+	<material name="Parrafin">
+		<D value="0.9" />
+		<composite n="38" ref="elHydrogen" />
+		<composite n="18" ref="elCarbon" />
 	</material>
 
 </materials>

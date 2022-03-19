@@ -297,10 +297,10 @@ bool ArgListControl(G4String InitCard)
         G4cout << "Warning!!! Output level " << ControlOutput.OutputLevel << "\" is lower than 1, reset to 1."  << G4endl;
         ControlOutput.OutputLevel = 1;
     }
-    if (ControlOutput.OutputLevel > 3)
+    if (ControlOutput.OutputLevel > 5)
     {
-        G4cout << "Warning!!! Output level " << ControlOutput.OutputLevel << "\" is higher than 3, reset to 3."  << G4endl;
-        ControlOutput.OutputLevel = 3;
+        G4cout << "Warning!!! Output level " << ControlOutput.OutputLevel << "\" is higher than 3, reset to 5."  << G4endl;
+        ControlOutput.OutputLevel = 5;
     }
     ControlOutput.OutputFile = G4String(Env->GetValue("OutputFile", "sim.root"));
     if (G4String(SplitStr(ControlOutput.OutputFile.data(), "\\.").back()) != G4String("root"))

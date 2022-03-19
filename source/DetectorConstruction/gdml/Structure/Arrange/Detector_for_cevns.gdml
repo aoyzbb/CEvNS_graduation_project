@@ -59,27 +59,27 @@
         <!--HDPE size-->
         <variable name="HDPEX" value="kernelX+2*76.2" /> <!--2*80(12/17) 3inch = 3*2.54 = 7.62cm-->
         <variable name="HDPEY" value="kernelY+2*76.2" /> 
-        <variable name="HDPEZ" value="kernelZ+2*76.2" />
+        <variable name="HDPEZ" value="1804.80" /><!--L = 3 inch-->
 
         <!--low bkg Pb-->
         <variable name="lowPbX" value="HDPEX+2*50.8" /><!--2* 50(12/17) 2inch = 5.08cm -->
         <variable name="lowPbY" value="HDPEY+2*50.8" />
-        <variable name="lowPbZ" value="HDPEZ+2*50.8" />
+        <variable name="lowPbZ" value="2008.00" /><!-- L = 2 inch-->
 
         <!--contemporary Pb-->
         <variable name="contemPbX" value="lowPbX+2*101.6"/><!--2* 120, 4inch = 4*2.54 = 10.16--> 
         <variable name="contemPbY" value="lowPbY+2*101.6"/>
-        <variable name="contemPbZ" value="lowPbZ+2*101.6"/>
+        <variable name="contemPbZ" value="2414.40"/> <!--L = 4inch-->
 
         <!--塑料闪烁体 12/17-->
         <variable name="LScinX" value="contemPbX+2*25.4"/><!--1 inch=2.54--> 
         <variable name="LScinY" value="contemPbY+2*25.4"/>
-        <variable name="LScinZ" value="contemPbZ+2*25.4"/>
+        <variable name="LScinZ" value="2617.60"/><!--L = 1 inch-->
 
         <!--水 12/17-->
         <variable name="watertankX" value="LScinX+2*101.6"/><!--4 inch=10.16--> 
         <variable name="watertankY" value="LScinY+2*101.6"/>
-        <variable name="watertankZ" value="LScinZ+2*101.6"/>
+        <variable name="watertankZ" value="3024.00"/> <!--L = 4 inch-->
 
         <!--kernel内精细结构(内尺寸)-->
 

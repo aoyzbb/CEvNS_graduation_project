@@ -4,8 +4,8 @@
 
 PGGenerator::PGGenerator()
 {
-    fBoxLength = 300;
-    fBallRadius = 5000;
+    fBoxLength = 30;
+    fBallRadius = 500;
 }
 PGGenerator::~PGGenerator(){}
 void PGGenerator::Initialize(std::vector<std::string> PGParameters){}

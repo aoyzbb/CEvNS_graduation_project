@@ -11,6 +11,7 @@
 #include "G4SystemOfUnits.hh"
 #include "G4Event.hh"
 #include <iomanip>
+#include <vector>
 
 #include "PGGeneratorList.hh"
 
@@ -91,6 +92,25 @@ private:
     G4double fTruthMomDirY;
     G4double fTruthMomDirZ;
     
+    //经过不同层时的能量分布
+    G4double eng_water;
+    G4double eng_ps;
+    G4double eng_contemPb;
+    G4double eng_lowPb;
+    G4double eng_HDPE;
+    G4double eng_kernel;
+    G4double eng_CsI;
+
+    //仅针对 单个 CsI 信息
+    std::vector<double> eng_deposit;
+    std::vector<double> pid_deposit;
+    std::vector<double> x_deposit;
+    std::vector<double> y_deposit;
+    std::vector<int> process_type;
+    std::vector<double> pid_through;
+    std::vector<double> kenergy_through;
+    
+
 };
 
 #endif

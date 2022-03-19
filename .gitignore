@@ -45,3 +45,8 @@
 #vscode
 /.vscode
 /.vscode/*
+
+run.sh
+.*
+tools/
+
