@@ -11,6 +11,7 @@
 #include "G4Track.hh"
 #include "G4Step.hh"
 #include <iomanip>
+#include <vector>
 
 class MyG4BasedAnalysis;
 class MyRootBasedAnalysis;
@@ -23,6 +24,9 @@ struct OutputControl
     G4String DetectorName;
     G4String OutputFile;
     G4int OutputLevel;
+    //Event Verbose
+    bool IfTrackVerbose;
+    std::vector<G4int> VerboseEvents;
 };
 
 class MyAnalysisManager

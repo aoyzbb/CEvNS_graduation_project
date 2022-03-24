@@ -17,7 +17,12 @@
 #include "MyRootBasedAnalysis.hh"
 #include "Verbose.hh"
 
+#include "G4EventManager.hh"
+#include "G4TrackingManager.hh"
+
 #include "PGGeneratorList.hh"
+
+#include <algorithm>
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -76,6 +81,17 @@ void MyAnalysisManager::BeginOfEventAction(const G4Event *evt)
 {
     if (verbose)
         G4cout << "====>MyAnalysisManager::BeginOfEventAction()" << G4endl;
+    if(fControlOutput.IfTrackVerbose)
+    {
+        G4int EventID = evt->GetEventID();
+        if(std::find(fControlOutput.VerboseEvents.begin(), fControlOutput.VerboseEvents.end(), EventID) != fControlOutput.VerboseEvents.end())
+        {
+            G4EventManager *eventManager = G4EventManager::GetEventManager();
+            eventManager->SetVerboseLevel(1);
+            G4TrackingManager *trackManager = eventManager->GetTrackingManager();
+            trackManager->SetVerboseLevel(1);
+        }
+    }
 
     fMyG4BasedAnalysis->BeginOfEventAction(evt);
     fMyRootBasedAnalysis->BeginOfEventAction(evt);
@@ -88,6 +104,16 @@ void MyAnalysisManager::EndOfEventAction(const G4Event *evt)
     if (verbose)
         G4cout << "====>MyAnalysisManager::EndOfEventAction()" << G4endl;
 
+    if(fControlOutput.IfTrackVerbose)
+    {
+        G4EventManager *eventManager = G4EventManager::GetEventManager();
+        if(eventManager->GetVerboseLevel() != 0)
+        {
+            eventManager->SetVerboseLevel(0);
+            G4TrackingManager *trackManager = eventManager->GetTrackingManager();
+            trackManager->SetVerboseLevel(0);
+        }
+    }
     fMyG4BasedAnalysis->EndOfEventAction(evt);
     fMyRootBasedAnalysis->EndOfEventAction(evt);
 }

@@ -128,6 +128,22 @@ std::vector<G4double> ConvertStrToVectordouble(const char* Str)
     return VectorDouble;
 }
 
+std::vector<G4int> ConvertStrToVectorint(const char* Str)
+{
+    std::vector<int> VectorInt;
+    VectorInt.clear();
+    if(Str == "")
+        return VectorInt;
+    std::vector<std::string> StrVector = SplitStr(Str, ",");
+    for(auto str:StrVector)
+    {
+        if(!(std::isdigit((str.c_str()[0])) || (str.c_str()[0] == '-')))
+            throw "ConvertStrToVectordouble: Input str is not a vaild number!";
+        VectorInt.push_back(std::stoi(str));
+    }
+    return VectorInt;
+}
+
 G4ThreeVector ConvertStrToG4ThreeVector(const char* Str)
 {
     std::vector<G4double> VectorDouble = ConvertStrToVectordouble(Str);
@@ -308,6 +324,10 @@ bool ArgListControl(G4String InitCard)
         G4cerr << "Error!!! Output File name \" " << ControlOutput.OutputFile << " \" Should end with \" .root \"!!!"  << G4endl;
         return false;
     }
+
+    //Event Track Verbose
+    ControlOutput.IfTrackVerbose = (Env->GetValue("TrackVerbose", 0) != 0);
+    ControlOutput.VerboseEvents = ConvertStrToVectorint(Env->GetValue("VerboseEvents", "0"));
 
     //Set Random Seed
     G4int RandomSeed = Env->GetValue("RandomSeed", 2022);
