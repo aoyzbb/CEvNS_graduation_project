@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <!-- 
-    此项目屏蔽体结构
-    从外至内
-    石蜡
-    塑料闪烁体
-    铅
-    低本底铅
-    HDPE 
-    ======kernel 
-    杜瓦瓶
-    铜
-    PMT及CsI
+       Optical.gdml
+    包含: 一般材料和光学材料的定义
+    包含: 光学界面定义, boarder surface / skin surface
+    注意测试此例子，需要将入射粒子改为 opticalphoton，命令如下：
+    /gun/particle opticalphoton
+    /gun/momentum 0 0.2 1.5 eV
+    /gun/polarization 1 0 0
+    /run/beamOn 100
 -->
 
 <!DOCTYPE gdml [
@@ -52,129 +49,28 @@
         <matrix name="SPECULARSPIKECONSTANT" coldim="2" values="1.65*eV 0.0" />
         <matrix name="BACKSCATTERCONSTANT" coldim="2" values="1.65*eV 0.0" />
 
-        <!--Important 基本厚度-->
-        <variable name="scale_factor" value="2" /> 
-        <variable name="inch" value="25.4" /> <!--unit : mm-->
-        <variable name="d_HDPE" value="3*inch" />
-        <variable name="d_lowPb" value="2*inch" />  
-        <variable name="d_contem" value="4*inch" /> 
-        <variable name="d_scin" value="2*inch" /> 
-        <variable name="d_parrafin" value="200" />   
 
-        <!--顶底厚度-->
-        <variable name="dHDPE" value="d_HDPE*scale_factor" /> 
-        <variable name="dlowPb" value="d_lowPb*scale_factor" /> 
-        <variable name="dcontem" value="d_contem*scale_factor" /> 
-        <variable name="dscin" value="d_scin*scale_factor" />
-        <variable name="dparrafin" value="d_parrafin*scale_factor" />  
-
-        
-        <!--kernel box-->
-        <variable name="kernelX" value="600" /> 
-        <variable name="kernelY" value="600" />
-        <variable name="kernelZ" value="1500" /><!--1000, 12/17-->
-
-        <!--kernel 外屏蔽体(外尺寸)-->
-        <!--HDPE size-->
-        <variable name="HDPEX" value="kernelX+2*d_HDPE" /> 
-        <variable name="HDPEY" value="kernelY+2*d_HDPE" /> 
-        <variable name="HDPEZ" value="kernelZ+2*dHDPE" />
-
-        <!--low bkg Pb-->
-        <variable name="lowPbX" value="HDPEX+2*d_lowPb" /><!--2* 50(12/17) 2inch = 5.08cm -->
-        <variable name="lowPbY" value="HDPEY+2*d_lowPb" />
-        <variable name="lowPbZ" value="HDPEZ+2*dHDPE" /><!-- L = 2 inch-->
-
-        <!--contemporary Pb-->
-        <variable name="contemPbX" value="lowPbX+2*d_lowPb"/><!--2* 120, 4inch = 4*2.54 = 10.16--> 
-        <variable name="contemPbY" value="lowPbY+2*d_lowPb"/>
-        <variable name="contemPbZ" value="lowPbZ+2*dlowPb"/> <!--L = 4inch-->
-
-        <!--塑料闪烁体 12/17-->
-        <variable name="LScinX" value="contemPbX+2*d_scin"/><!--1 inch=2.54--> 
-        <variable name="LScinY" value="contemPbY+2*d_scin"/>
-        <variable name="LScinZ" value="contemPbZ+2*dscin"/><!--L = 1 inch-->
-
-        <!--石蜡--> 12/17-->
-        <variable name="parrafinX" value="LScinX+2*d_parrafin"/><!--4 inch=10.16--> 
-        <variable name="parrafinY" value="LScinY+2*d_parrafin"/>
-        <variable name="parrafinZ" value="LScinZ+2*dparrafin"/> <!--L = 4 inch-->
-
-        <!--kernel内精细结构(内尺寸)-->
-
-        <!--不锈钢(内胆,内)内放液氮-->
-        <variable name="stainFeID" value="478"/>
-        <variable name="stainFeIH" value="978"/>
-
-        <!--不锈钢(内胆,外)-->
-        <variable name="stainFeD" value="484"/>
-        <variable name="stainFeH" value="984"/>
-
-        <!--不锈钢(外胆,内)-->
-        <variable name="stainFeOD" value="494"/>
-        <variable name="stainFeOH" value="994"/>
-
-        <!--不锈钢(外胆,外)-->
-        <variable name="stainFeOOD" value="500"/>
-        <variable name="stainFeOOH" value="1000"/>
-
-        <!--支架(外) Cu-->
-        <variable name="CuX" value="280"/>
-        <variable name="CuY" value="280"/>
-        <variable name="CuZ" value="700"/>
-
-        <!--支架(内) Cu-->
-        <variable name="LNX" value="180"/>
-        <variable name="LNY" value="180"/>
-        <variable name="LNZ" value="600"/>
 
         <!--CsI-->
         <variable name="CsIX" value="50"/>
         <variable name="CsIY" value="50"/>
         <variable name="CsIZ" value="270"/>
 
-        <!--PMT-->
-        <variable name="PMTD" value="76"/>
-        <variable name="PMTH" value="165"/>
 
-        <!--loop-->
-        <variable name="i" value="0"/>
-        <variable name="j" value="0"/>
+        
+
 
     </define>
 
     <solids>
        
-        <box lunit="mm" name="world" x="10000" y="10000" z="10000" />
+        <box lunit="mm" name="world" x="100000" y="100000" z="100000" />
         
-        <tube lunit="mm" name="stainFeItube" rmin="0" rmax="stainFeID/2" z="stainFeIH" deltaphi="360" startphi="0" aunit="rad"/>
 
-        <tube lunit="mm" name="stainFetube" rmin="0" rmax="stainFeD/2" z="stainFeH" deltaphi="360" startphi="0" aunit="rad"/>
-
-        <tube lunit="mm" name="stainFeOtube" rmin="0" rmax="stainFeOD/2" z="stainFeOH" deltaphi="360" startphi="0" aunit="rad"/>
-
-        <tube lunit="mm" name="stainFeOOtube" rmin="0" rmax="stainFeOOD/2" z="stainFeOOH" deltaphi="360" startphi="0" aunit="rad"/>
-              
-        <box lunit="mm" name="CuBox" x="CuX" y="CuY" z="CuZ" />
-
-        <box lunit="mm" name="LNBox" x="LNX" y="LNY" z="LNZ" />
 
         <box lunit="mm" name="CsIBox" x="CsIX" y="CsIY" z="CsIZ" />
 
-        <tube name="PMTtube" rmin="0" rmax="38" z="165" deltaphi="360" startphi="0" aunit="rad" lunit="mm" />
 
-        <box lunit="mm" name="kernelBox" x="kernelX" y="kernelY" z="kernelZ" />
-    
-        <box lunit="mm" name="HDPEBox" x="HDPEX" y="HDPEY" z="HDPEZ" />
-        
-        <box lunit="mm" name="lowPbBox" x="lowPbX" y="lowPbY" z="lowPbZ" />
-        
-        <box lunit="mm" name="contemPbBox" x="contemPbX" y="contemPbY" z="contemPbZ" />
-
-        <box lunit="mm" name="LScinBox" x="LScinX" y="LScinY" z="LScinZ" />
-
-        <box lunit="mm" name="parrafinBox" x="parrafinX" y="parrafinY" z="parrafinZ" />
- 
     </solids>
 
 
@@ -182,12 +78,7 @@
 
         <!--逐级定义-->
         
-        <!--PMT-->
-        <volume name="PMTvol">
-            <materialref ref="OptQuartz" />
-            <solidref ref="PMTtube"/>
-            <auxiliary auxtype="setColor" auxvalue="kYellow" auxunit="2" />
-        </volume>
+  
 
         <!--CsI-->
         <volume name="CsIvol">
@@ -196,153 +87,7 @@
             <auxiliary auxtype="setColor" auxvalue="kRed" auxunit="2" />
         </volume>
 
-        <!--内层LN-->
-        <volume name="LNIvol">
-            <materialref ref="N2Liquid" />
-            <solidref ref="LNBox" />
 
-            <loop for="i" from="0" to="1" step="1">
-                <loop for="j" from="0" to="1" step="1">
-                    <physvol name="CsIphy_[i][j]">
-                        <volumeref ref="CsIvol"/>
-                        <position x="-84*i+42" y="-84*j+42" z="0" unit="mm" />
-                    </physvol>
-
-                    <physvol name="PMTphy1_[i][j]">
-                        <volumeref ref="PMTvol" />
-                        <position x="-84*i+42" y="-84*j+42" z="217.5" unit="mm" />
-                    </physvol>
-
-                    <physvol name="PMTphy2_[i][j]">
-                        <volumeref ref="PMTvol" />
-                        <position x="-84*i+42" y="-84*j+42" z="-217.5" unit="mm" />
-                    </physvol>
-                </loop>
-            </loop>
-                     
-        </volume>
-
-        <!--Cu-->
-        <volume name="Cuvol">
-            <materialref ref="Copper" />
-            <solidref ref="CuBox" />
-            <physvol name="LNIphy">
-                <volumeref ref="LNIvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-        </volume>
-
-        <!--液氮(外)-->
-        <volume name="LNvol">
-            <materialref ref="N2Liquid" />
-            <solidref ref="stainFeItube" />
-            
-            
-            <physvol name="Cu">
-                <volumeref ref="Cuvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-
-           
-            
-        </volume>
-
-        <!--不锈钢,内胆,外-->
-        <volume name="stainFevol">
-            <materialref ref="SSteel" />
-            <solidref ref="stainFetube" />
-            <physvol name="LNphy">
-                <volumeref ref="LNvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-        </volume>
-
-        <!--不锈钢,外胆,内-->
-        <volume name="stainFeOvol">
-            <materialref ref="Vacuum" />
-            <solidref ref="stainFeOtube" />
-            <physvol name="stainFephy">
-                <volumeref ref="stainFevol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-        </volume>
-
-        <!--不锈钢,外胆,外-->
-        <volume name="stainFeOOvol">
-            <materialref ref="SSteel" />
-            <solidref ref="stainFeOOtube" />
-            <physvol name="stainFeOphy">
-                <volumeref ref="stainFeOvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-        </volume>
-        
-        
-        <volume name="kernelvol">
-            <materialref ref="Air" />
-            <solidref ref="kernelBox" />
-            <physvol name="stainphy">
-                <volumeref ref="stainFeOOvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-        </volume>
-
-
-        <volume name="HDPEvol">
-            <materialref ref="ScinPolyethylene" />
-            <solidref ref="HDPEBox" />
-            <physvol name="kernelphy">
-                <volumeref ref="kernelvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-        </volume>
-
-        <volume name="lowPbvol">
-            <materialref ref="Lead" />
-            <solidref ref="lowPbBox" />
-            <physvol name="HDPEphy">
-                <volumeref ref="HDPEvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-        </volume>
-
-       
-
-        <volume name="contemPbvol">
-            <materialref ref="Lead" />
-            <solidref ref="contemPbBox" />
-          
-         
-            <physvol name="lowPbphy">
-                <volumeref ref="lowPbvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-           
-        </volume>
-
-        <volume name="LScinvol">
-            <materialref ref="ScinLS" />
-            <solidref ref="LScinBox" />
-          
-         
-            <physvol name="contemPbphy">
-                <volumeref ref="contemPbvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-           
-        </volume>
-
-        <volume name="parrafinvol">
-            <materialref ref="Parrafin" />
-            <solidref ref="parrafinBox" />
-          
-         
-            <physvol name="LScinphy">
-                <volumeref ref="LScinvol" />
-                <position x="0." y="0." z="0." unit="mm" />
-            </physvol>
-           
-        </volume>
 
 
 
@@ -350,9 +95,8 @@
             <materialref ref="Vacuum" />
             <solidref ref="world" />
 
-        
-            <physvol name="parrafinphy">
-                <volumeref ref="parrafinvol" />
+            <physvol name="CsIphy">
+                <volumeref ref="CsIvol" />
                 <position x="0." y="0." z="0." unit="mm" />
             </physvol>
         

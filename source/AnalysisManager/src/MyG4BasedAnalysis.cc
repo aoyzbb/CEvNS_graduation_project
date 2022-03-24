@@ -139,13 +139,7 @@ void MyG4BasedAnalysis::BeginOfRunAction()
         analysisManager->CreateNtupleDColumn("engpn");
         analysisManager->CreateNtupleDColumn("engnn");
         analysisManager->CreateNtupleDColumn("engnp");
-        analysisManager->CreateNtupleDColumn("TruthEnergy");
-        analysisManager->CreateNtupleDColumn("TruthPosX");
-        analysisManager->CreateNtupleDColumn("TruthPosY");
-        analysisManager->CreateNtupleDColumn("TruthPosZ");
-        analysisManager->CreateNtupleDColumn("TruthMomDirX");
-        analysisManager->CreateNtupleDColumn("TruthMomDirY");
-        analysisManager->CreateNtupleDColumn("TruthMomDirZ");
+
         break;
 
         case 2:
@@ -157,12 +151,7 @@ void MyG4BasedAnalysis::BeginOfRunAction()
         analysisManager->CreateNtupleDColumn("countnnd");
         analysisManager->CreateNtupleDColumn("countnpu");
         analysisManager->CreateNtupleDColumn("countnpd");
-        analysisManager->CreateNtupleDColumn("TruthPosX");
-        analysisManager->CreateNtupleDColumn("TruthPosY");
-        analysisManager->CreateNtupleDColumn("TruthPosZ");
-        analysisManager->CreateNtupleDColumn("TruthMomDirX");
-        analysisManager->CreateNtupleDColumn("TruthMomDirY");
-        analysisManager->CreateNtupleDColumn("TruthMomDirZ");
+
         break;
 
         case 3:
