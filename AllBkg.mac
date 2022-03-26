@@ -1,4 +1,4 @@
-/random/setSeeds 6395570 68140546
+#/random/setSeeds 6395570 68140546
 
 #Now decay chain for volume WaterLog_PV
 /gps/pos/type Volume

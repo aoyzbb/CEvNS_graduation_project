@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-	gRandom->SetSeed(0);
+	//gRandom->SetSeed(0);
 
 	TFile* f1 = new TFile("output.root", "recreate");
 	TTree* t = new TTree("energy","merged");

@@ -331,8 +331,12 @@ bool ArgListControl(G4String InitCard)
 
     //Set Random Seed
     G4int RandomSeed = Env->GetValue("RandomSeed", 2022);
+    G4Random::setTheEngine(new CLHEP::RanecuEngine);
     G4Random::setTheSeed(RandomSeed);
     gRandom->SetSeed(RandomSeed);
+    // Choose the Random engine
+    //G4long seed = time(NULL);
+    //G4Random::setTheSeed(seed);
 
     return true;
 }
@@ -379,10 +383,6 @@ int main(int argc, char **argv)
     //
     // Detect interactive mode (if only one argument) and define UI session
     //
-    // Choose the Random engine
-    G4Random::setTheEngine(new CLHEP::RanecuEngine);
-    G4long seed = time(NULL);
-    G4Random::setTheSeed(seed);
 
     //Set Particle Source
     PGGeneratorList* fPGGeneratorList = PGGeneratorList::GetInstance();
