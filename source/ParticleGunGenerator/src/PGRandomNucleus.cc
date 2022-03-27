@@ -52,7 +52,7 @@ PGRandomNucleus::PGRandomNucleus()
 {
     fPGType = "Coherent elastic neutrino-nucleus scattering";
     fClassName = "PGRandomNucleus";
-    fParticle = "Cs137";
+    fParticle = "Cs133";
     fParticleEnergy = 0. * MeV;
     fParticlePosition = G4ThreeVector(0., 0., 0.);
     fParticlePolarization = G4ThreeVector(0., 0., 0.);
@@ -64,8 +64,8 @@ PGRandomNucleus::PGRandomNucleus()
     fCsISize = G4ThreeVector(0., 0., 0.);
     fCsIPos.clear();
 
-    fMapNucleus[G4String("Cs137")] = std::pair<G4int, G4long>(137, 1000551370);
-    fMapNucleus[G4String("I127")]  = std::pair<G4int, G4long>(127, 1000531270);
+    fMapNucleus[G4String("Cs133")] = std::pair<G4int, G4int>(55, 133);
+    fMapNucleus[G4String("I127")]  = std::pair<G4int, G4int>(53, 127);
 
     fRandomNucleus = new RandomNucleus();
 }
@@ -94,8 +94,8 @@ void PGRandomNucleus::Initialize(std::vector<std::string> PGParameters)
             }
         }
     }
-    this->GetCsIVolAndPos();
 }
+
 void PGRandomNucleus::GetCsIVolAndPos()
 {
     G4LogicalVolumeStore* LogVolStore = G4LogicalVolumeStore::GetInstance();
@@ -107,13 +107,20 @@ void PGRandomNucleus::GetCsIVolAndPos()
     fCsISize[1] = SDSolVol->GetYHalfLength();
     fCsISize[2] = SDSolVol->GetZHalfLength();
 
-    fCsINum = UInt_t(SDLogVol->GetNoDaughters());
-    for (UInt_t iP = 0; iP < fCsINum; ++iP)
+    std::cout << "Catch CsI logic volume. Size: X: " << fCsISize[0]*2 << "\tY: " << fCsISize[1]*2 << "\tZ: " << fCsISize[2]*2 << std::endl;
+
+    G4PhysicalVolumeStore* PhyVolStore = G4PhysicalVolumeStore::GetInstance();
+    for (auto iPhyVol = PhyVolStore->begin(); iPhyVol != PhyVolStore->end(); ++iPhyVol)
     {
-        G4VPhysicalVolume* SDPhyVol = SDLogVol->GetDaughter(iP);
-        G4ThreeVector VSDPosition = SDPhyVol->GetTranslation();
-        fCsIPos.push_back(VSDPosition);
+        G4String Name = (*iPhyVol)->GetName();
+        if(Name.find(G4String("CsIphy")) != G4String::npos)
+        {
+            fCsIPos.push_back((*iPhyVol)->GetTranslation());
+            std::cout << "Catch CsI physical volume, Pos: X: " << fCsIPos[fCsINum][0] << "\tY: " << fCsIPos[fCsINum][1] << "\tZ: " << fCsIPos[fCsINum][2] << std::endl;
+            ++fCsINum;
+        }
     }
+    std::cout << "Catch totally " << fCsINum << " CsI physical volume." << std::endl;
 }
 
 G4ThreeVector PGRandomNucleus::NucleusPos()
@@ -136,9 +143,13 @@ G4ThreeVector PGRandomNucleus::NucleusMomDir(G4double theta)
 
 void PGRandomNucleus::Generate()
 {
+    if(fCsINum == 0)
+    {
+        this->GetCsIVolAndPos();
+    }
     NucleusThetaE aNucleus = fRandomNucleus->GetRndmNucleusThetaE();
-    fParticleEnergy = aNucleus.E;
-    fParticlePosition = this->NucleusPos();
+    fParticleEnergy = aNucleus.E * MeV;
+    fParticlePosition = this->NucleusPos() * mm;
     fParticleMomentumDirection = this->NucleusMomDir(aNucleus.Theta);
     ++fEvtFlag;
 }

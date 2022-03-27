@@ -6,9 +6,14 @@ OutputLevel: 1
 #AdditionalMACCommand: verbose.mac
 
 ### --> CSV文件能谱抽样
-PGType: CSV
-PGParameters: -n,gamma,/mnt/d/WSLFiles/CEvNS/data.csv
-GenEvents: 50000
+#PGType: CSV
+#PGParameters: -n,gamma,/mnt/d/WSLFiles/CEvNS/data.csv
+#GenEvents: 50000
+
+### --> Nucleus 抽样
+PGType: Nucleus
+PGParameters: -n,Cs133
+GenEvents: 500
 
 ### --> Particle Gun 产生
 #PGType: Simple

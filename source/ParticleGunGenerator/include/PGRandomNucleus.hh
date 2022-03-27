@@ -92,6 +92,7 @@ public:
     inline G4int GetTypeFlag(){return fTypeFlag;}
     inline G4int GetGenerateNumber(){return fGenNumber;}
 
+    inline std::pair<G4String, std::pair<G4int, G4int> > GetIon() {return std::pair<G4String, std::pair<G4int, G4int> >(fParticle, fMapNucleus[fParticle]);}
 
 private:
     G4String fPGType;
@@ -109,7 +110,7 @@ private:
     G4ThreeVector NucleusMomDir(G4double);
     void GetCsIVolAndPos();
 
-    std::map<G4String, std::pair<G4int, G4long>> fMapNucleus;
+    std::map<G4String, std::pair<G4int, G4int> > fMapNucleus;
     G4int fCsINum;
     G4ThreeVector fCsISize;
     std::vector<G4ThreeVector> fCsIPos;

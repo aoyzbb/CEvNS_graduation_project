@@ -10,11 +10,14 @@
 #include "G4Event.hh"
 #include "G4ParticleGun.hh"
 #include "G4ParticleTable.hh"
+#include "G4IonTable.hh"
+#include "G4GenericIon.hh"
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
 #include "Verbose.hh"
 
 #include "MyDetectorConstruction.hh"
+#include "PGRandomNucleus.hh"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wshadow"
@@ -48,8 +51,8 @@ MyParticleGun::MyParticleGun(MyDetectorConstruction *det)
     particleTable = G4ParticleTable::GetParticleTable();
 
     //Particle Ptr
-    G4String ParticleList[7] = {"gamma", "e+", "e-", "proton", "neutron", "Cs137", "I127"};
-    for (int i = 0; i < 7; ++i)
+    G4String ParticleList[5] = {"gamma", "e+", "e-", "proton", "neutron"};
+    for (int i = 0; i < 5; ++i)
         mapGenParticlePtr[ParticleList[i]] = particleTable->FindParticle(ParticleList[i]);
 
     //Get Cosmic Ray Generator
@@ -61,8 +64,15 @@ MyParticleGun::MyParticleGun(MyDetectorConstruction *det)
     //#PartGun 2. 初始化变量
     //以下这些参数：粒子种类/能量/位置/动量等可以被mac文件重置
 
-    G4cout << __LINE__ <<  fPGGenerator->GetParticle() << G4endl;
-    if (fConfigPS.ParticleGunType != G4String("Simple"))
+    if(fConfigPS.ParticleGunType == G4String("Nucleus"))
+    {
+        //std::pair<G4String, std::pair<G4int, G4int> > IonDef = dynamic_cast<PGRandomNucleus*>(fPGGenerator)->GetIon();
+        //std::cout << "Get Ion: " << IonDef.first << "\tZ: " << IonDef.second.first << "\tA:" << IonDef.second.second << std::endl;
+        //G4ParticleDefinition* Ion = G4IonTable::GetIonTable()->GetIon(IonDef.second.first, IonDef.second.second, 0.);
+        //std::cout << "IonPtr:" << Ion << std::endl;
+        //fParticleGun->SetParticleDefinition(Ion);
+    }
+    else if (fConfigPS.ParticleGunType != G4String("Simple"))
     {
         fParticleGun->SetParticleDefinition(mapGenParticlePtr[fPGGenerator->GetParticle()]);
     }
@@ -93,90 +103,8 @@ MyParticleGun::MyParticleGun(MyDetectorConstruction *det)
 void MyParticleGun::OpenRootFile(G4String)
 {
     GunType = 1;
-
-    // 从用户提供的root文件来生成粒子，需要根据root文件来修改下面的内容。
-    //
-    /*
-    rootfile = new TFile(fname);
-    if (!rootfile->IsOpen())
-    {
-        G4cout << "####> Can't open the " << fname << ", will use simple-Gun instead." << G4endl;
-        GunType = 0;
-        return;
-    }
-
-    tree = (TTree *)rootfile->Get("datatree");
-    tree->SetBranchAddress("XPosition", &x);
-    tree->SetBranchAddress("YPosition", &y);
-    tree->SetBranchAddress("ZPosition", &z);
-    tree->SetBranchAddress("XMomentum", &px);
-    tree->SetBranchAddress("YMomentum", &py);
-    tree->SetBranchAddress("ZMomentum", &pz);
-    tree->SetBranchAddress("BackgroundFrequency", &freq);
-
-    Nentries = tree->GetEntries();
-    */
 }
 
-/*
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-//GunType=2, CRY：cosmic ray package的函数
-//----------------------------------------------------------------------------//
-void MyParticleGun::InputCRY()
-{
-    InputState = 1;
-}
-
-//----------------------------------------------------------------------------//
-void MyParticleGun::UpdateCRY(std::string *MessInput)
-{
-    CRYSetup *setup = new CRYSetup(*MessInput, "../packages/cry_v1.7/data/");
-
-    gen = new CRYGenerator(setup);
-
-    // set random number generator
-    RNGWrapper<CLHEP::HepRandomEngine>::set(CLHEP::HepRandom::getTheEngine(), &CLHEP::HepRandomEngine::flat);
-    setup->setRandomFunction(RNGWrapper<CLHEP::HepRandomEngine>::rng);
-    InputState = 0;
-    GunType = 2;
-}
-
-//----------------------------------------------------------------------------//
-void MyParticleGun::CRYFromFile(G4String newValue)
-{
-    // Read the cry input file
-    std::ifstream inputFile;
-    inputFile.open(newValue, std::ios::in);
-    char buffer[1000];
-
-    if (inputFile.fail())
-    {
-        G4cout << "Failed to open input file " << newValue << G4endl;
-        G4cout << "Make sure to define the cry library on the command line" << G4endl;
-        InputState = -1;
-        GunType = 0;
-    }
-    else
-    {
-        std::string setupString("");
-        while (!inputFile.getline(buffer, 1000).eof())
-        {
-            setupString.append(buffer);
-            setupString.append(" ");
-        }
-
-        CRYSetup *setup = new CRYSetup(setupString, "../packages/cry_v1.7/data/");
-
-        gen = new CRYGenerator(setup);
-
-        // set random number generator
-        RNGWrapper<CLHEP::HepRandomEngine>::set(CLHEP::HepRandom::getTheEngine(), &CLHEP::HepRandomEngine::flat);
-        setup->setRandomFunction(RNGWrapper<CLHEP::HepRandomEngine>::rng);
-        InputState = 0;
-        GunType = 2;
-    }
-}
-*/
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -196,14 +124,27 @@ void MyParticleGun::GeneratePrimaries(G4Event *anEvent)
     if (GunType == 0) //根据mac或者XML里的定义产生
     {
         if (fConfigPS.PGEnable)
-            fPGGenerator->Generate();
-        if (fConfigPS.PGEnable && (fConfigPS.ParticleGunType != G4String("Simple")))
         {
-            fParticleGun->SetParticleDefinition(mapGenParticlePtr[fPGGenerator->GetParticle()]);
-            fParticleGun->SetParticleEnergy(fPGGenerator->GetParticleEnergy());
-            fParticleGun->SetParticlePosition(fPGGenerator->GetParticlePosition());
-            fParticleGun->SetParticlePolarization(fPGGenerator->GetParticlePolarization());
-            fParticleGun->SetParticleMomentumDirection(fPGGenerator->GetParticleMomentumDirection());
+            fPGGenerator->Generate();
+
+            if (fConfigPS.ParticleGunType != G4String("Simple"))
+            {
+                if (fConfigPS.ParticleGunType == G4String("Nucleus"))
+                {
+                    std::pair<G4String, std::pair<G4int, G4int>> IonDef = dynamic_cast<PGRandomNucleus *>(fPGGenerator)->GetIon();
+                    //std::cout << "Get Ion: " << IonDef.first << "\tZ: " << IonDef.second.first << "\tA:" << IonDef.second.second << std::endl;
+                    G4ParticleDefinition *Ion = G4IonTable::GetIonTable()->GetIon(IonDef.second.first, IonDef.second.second, 0.);
+                    fParticleGun->SetParticleDefinition(Ion);
+                }
+                else
+                {
+                    fParticleGun->SetParticleDefinition(mapGenParticlePtr[fPGGenerator->GetParticle()]);
+                }
+                fParticleGun->SetParticleEnergy(fPGGenerator->GetParticleEnergy());
+                fParticleGun->SetParticlePosition(fPGGenerator->GetParticlePosition());
+                fParticleGun->SetParticlePolarization(fPGGenerator->GetParticlePolarization());
+                fParticleGun->SetParticleMomentumDirection(fPGGenerator->GetParticleMomentumDirection());
+            }
         }
         //如果xml里定义里particleGun，那么用xml里的参数初始化
         //else if (fDetector->GetPrimaryDescription() != 0)

@@ -106,9 +106,9 @@ std::vector<std::string> SplitStr(const char* Str, const char* Split)
     return Vector;
 }
 
-G4String GetDetectorName(G4String GDMLFile)
+G4String GetDetectorName(G4String GDMLFilePath)
 {
-    std::vector<std::string> StrVector = SplitStr(GDMLFile.data(), "/");
+    std::vector<std::string> StrVector = SplitStr(GDMLFilePath.data(), "/");
     return G4String(SplitStr(StrVector.back().c_str(), "\\.")[0]);
 }
 
@@ -116,7 +116,7 @@ std::vector<G4double> ConvertStrToVectordouble(const char* Str)
 {
     std::vector<double> VectorDouble;
     VectorDouble.clear();
-    if(Str == "")
+    if(Str != NULL && Str[0] == '\0')
         return VectorDouble;
     std::vector<std::string> StrVector = SplitStr(Str, ",");
     for(auto str:StrVector)
@@ -132,7 +132,7 @@ std::vector<G4int> ConvertStrToVectorint(const char* Str)
 {
     std::vector<int> VectorInt;
     VectorInt.clear();
-    if(Str == "")
+    if(Str != NULL && Str[0] == '\0')
         return VectorInt;
     std::vector<std::string> StrVector = SplitStr(Str, ",");
     for(auto str:StrVector)
@@ -270,7 +270,7 @@ bool ArgListControl(G4String InitCard)
         G4cerr << "Please choose one Particle Gun!!!"  << G4endl;
         return false;
     }
-    else if(ConfigPS.ParticleGunType != G4String("0") && ConfigPS.PSSignal != G4String("0") || ConfigPS.ParticleGunType != G4String("0") && ConfigPS.ExGPSMacFile != G4String("0") || ConfigPS.ExGPSMacFile != G4String("0") && ConfigPS.PSSignal != G4String("0")  )
+    else if((ConfigPS.ParticleGunType != G4String("0") && ConfigPS.PSSignal != G4String("0")) || (ConfigPS.ParticleGunType != G4String("0") && ConfigPS.ExGPSMacFile != G4String("0")) || (ConfigPS.ExGPSMacFile != G4String("0") && ConfigPS.PSSignal != G4String("0"))  )
     {
         G4cerr << "Only one of three types of Particle Gun could be initialized!!!"  << G4endl;
         return false;
