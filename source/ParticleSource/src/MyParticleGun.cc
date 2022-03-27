@@ -48,8 +48,8 @@ MyParticleGun::MyParticleGun(MyDetectorConstruction *det)
     particleTable = G4ParticleTable::GetParticleTable();
 
     //Particle Ptr
-    G4String ParticleList[5] = {"gamma", "e+", "e-", "proton", "neutron"};
-    for (int i = 0; i < 5; ++i)
+    G4String ParticleList[7] = {"gamma", "e+", "e-", "proton", "neutron", "Cs137", "I127"};
+    for (int i = 0; i < 7; ++i)
         mapGenParticlePtr[ParticleList[i]] = particleTable->FindParticle(ParticleList[i]);
 
     //Get Cosmic Ray Generator

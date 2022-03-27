@@ -2,6 +2,7 @@
 #include "SimpleParticleGun.hh"
 #include "PGNeutron.hh"
 #include "CSVInputEnergy.hh"
+#include "PGRandomNucleus.hh"
 
 #include "PGGeneratorList.hh"
 
@@ -13,6 +14,7 @@ PGGeneratorList::PGGeneratorList():fValid(false)
     fMapGeneratorPtr[G4String("Simple")]  = new SimpleParticleGun();
     fMapGeneratorPtr[G4String("PGN")]  = new PGNeutron();
     fMapGeneratorPtr[G4String("CSV")]  = new CSVInputEnergy();
+    fMapGeneratorPtr[G4String("Nucleus")] = new PGRandomNucleus();
 }
 
 PGGeneratorList::~PGGeneratorList(){
