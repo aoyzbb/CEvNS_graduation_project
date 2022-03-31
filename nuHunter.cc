@@ -74,6 +74,7 @@ G4int verbose = 0;
 PGPSConfig ConfigPS;
 OutputControl ControlOutput;
 G4String GDMLFile = ""; //GDML file for detector
+Int_t RandomSeed_bash = -1;
 
 void PrintUsage()
 {
@@ -331,6 +332,11 @@ bool ArgListControl(G4String InitCard)
 
     //Set Random Seed
     G4int RandomSeed = Env->GetValue("RandomSeed", 2022);
+    if(RandomSeed_bash != -1)
+    {
+        RandomSeed = RandomSeed_bash;
+    }
+    G4cout << "Set Random Seed to: " << RandomSeed << G4endl;
     G4Random::setTheEngine(new CLHEP::RanecuEngine);
     G4Random::setTheSeed(RandomSeed);
     gRandom->SetSeed(RandomSeed);
@@ -359,6 +365,10 @@ int main(int argc, char **argv)
                 {
                     G4cout << " Use interactive mode" << G4endl;
                     ui = new G4UIExecutive(argc, argv);
+                }
+                if(std::string(argv[iA]) == std::string("-s"))
+                {
+                    RandomSeed_bash = std::stoi(argv[iA+1]);
                 }
             }
             else if(SplitStr(argv[iA], "\\.").back() == std::string("card"))
