@@ -1,0 +1,23 @@
+/random/setSeeds 6395570 68140546
+
+#Now decay chain for volume 
+/gps/pos/type Volume
+/gps/pos/shape Sphere
+#/gps/pos/shape Para
+/gps/pos/centre 0. 0. 0. m
+#/gps/pos/halfx 0.03 m
+#/gps/pos/halfy 0.3 m
+#/gps/pos/halfz 0.3 m
+/gps/pos/radius 1.0 m
+/gps/pos/confine CsIphy__0_-1
+/gps/source/add 1
+/gps/rad Cs134
+/gps/radZA 55 134
+
+/control/verbose 0
+/run/verbose 0
+/process/verbose 0
+/tracking/verbose 0
+
+/MyRun/SetG4BasedFileName ./beta_branch_only.root
+/run/beamOn 100000

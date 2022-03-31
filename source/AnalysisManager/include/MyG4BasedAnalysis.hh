@@ -109,6 +109,9 @@ private:
     std::vector<int> process_type;
     std::vector<double> pid_through;
     std::vector<double> kenergy_through;
+
+    G4double truthenergy2;
+    G4bool eflag;
     
 
 };

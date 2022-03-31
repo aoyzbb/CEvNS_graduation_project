@@ -42,7 +42,8 @@ MyG4BasedAnalysis::MyG4BasedAnalysis()
     SetFileName("g4output.root");
     fNumOfEvents = 0;
     fOutputLevel = 1;
-
+    truthenergy2=-1;
+    eflag = true;
     //-------
     //#ANALYSIS 1. 初始化变量
     switch (fOutputLevel)
@@ -54,6 +55,7 @@ MyG4BasedAnalysis::MyG4BasedAnalysis()
         engdep1 = 0;
         engdep2 = 0;
         engdep3 = 0;
+
         break;
     
     case 2:
@@ -139,6 +141,8 @@ void MyG4BasedAnalysis::BeginOfRunAction()
         analysisManager->CreateNtupleDColumn("engpn");
         analysisManager->CreateNtupleDColumn("engnn");
         analysisManager->CreateNtupleDColumn("engnp");
+        analysisManager->CreateNtupleDColumn("truthenergy2");
+        
 
         break;
 
@@ -182,9 +186,11 @@ void MyG4BasedAnalysis::BeginOfRunAction()
         analysisManager->CreateNtupleDColumn("TruthMomDirX");
         analysisManager->CreateNtupleDColumn("TruthMomDirY");
         analysisManager->CreateNtupleDColumn("TruthMomDirZ");
+        
     
     
     analysisManager->FinishNtuple();
+
 
     return;
 }
@@ -224,6 +230,9 @@ void MyG4BasedAnalysis::BeginOfEventAction(const G4Event *evt)
     //-------
     fEvent = evt;
 
+    truthenergy2=-1;
+    eflag = true;
+
     //#ANALYSIS 3. 初始化Event开始的参数
     switch (fOutputLevel)
     {
@@ -234,6 +243,7 @@ void MyG4BasedAnalysis::BeginOfEventAction(const G4Event *evt)
         engdep1 = 0;
         engdep2 = 0;
         engdep3 = 0;
+
         break;
     
     case 2:
@@ -282,7 +292,7 @@ void MyG4BasedAnalysis::EndOfEventAction(const G4Event *)
     //#ANALYSIS 5. 在Event结束的时候将数据保存到ntuple
 
     auto analysisManager = G4AnalysisManager::Instance();
-    Int_t TruthOutColumn = 4;
+    Int_t TruthOutColumn = 5;
     switch (fOutputLevel)
     {
         case 1:
@@ -290,6 +300,7 @@ void MyG4BasedAnalysis::EndOfEventAction(const G4Event *)
         analysisManager->FillNtupleDColumn(1, 1, engdep1);
         analysisManager->FillNtupleDColumn(1, 2, engdep2);
         analysisManager->FillNtupleDColumn(1, 3, engdep3);
+        analysisManager->FillNtupleDColumn(1, 4, truthenergy2);
         
         break;
 
@@ -377,7 +388,12 @@ void MyG4BasedAnalysis::PreTrackingAction(const G4Track *aTrack)
 
     //-------
     //#ANALYSIS 4.2 在Tracking产生的时候保存相应数据
-
+    G4ParticleDefinition *particle = aTrack->GetDefinition();
+    G4int pid = particle->GetPDGEncoding();
+    if(eflag == true && pid == 11) {
+        truthenergy2 = aTrack->GetKineticEnergy();
+        eflag = false;
+    }
     return;
 }
 
