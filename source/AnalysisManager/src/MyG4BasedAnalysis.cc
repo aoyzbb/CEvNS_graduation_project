@@ -243,6 +243,7 @@ void MyG4BasedAnalysis::BeginOfEventAction(const G4Event *evt)
         engdep1 = 0;
         engdep2 = 0;
         engdep3 = 0;
+        truthenergy2 = 0;
 
         break;
     
@@ -390,7 +391,8 @@ void MyG4BasedAnalysis::PreTrackingAction(const G4Track *aTrack)
     //#ANALYSIS 4.2 在Tracking产生的时候保存相应数据
     G4ParticleDefinition *particle = aTrack->GetDefinition();
     G4int pid = particle->GetPDGEncoding();
-    if(eflag == true && pid == 11) {
+    G4int parentID = aTrack->GetParentID();
+    if(eflag == true && pid == 11 && parentID == 0) {
         truthenergy2 = aTrack->GetKineticEnergy();
         eflag = false;
     }

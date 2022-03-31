@@ -32,6 +32,7 @@ private:
 	std::string isotope;
 	int Z;
 	int A;
+	double m_BrNom;
 
 protected:
 	void LoadDataFile(std::string filename, DecayType type);

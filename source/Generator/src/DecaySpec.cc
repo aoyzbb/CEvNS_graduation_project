@@ -24,6 +24,7 @@ DecaySpec::DecaySpec(std::string name, int z, int a)
 	isotope = name;
 	Z = z;
 	A = a;
+	m_BrNom = 0;
 
 	string path = "../source/Generator/data";
 
@@ -50,6 +51,12 @@ DecaySpec::DecaySpec(std::string name, int z, int a)
 		cout<<branch->GetType()<<"\t"<<branch->GetBranchRatio()<<endl;
 
 	}*/
+
+	size_t nsize = DecayBranchList.size();
+	for(size_t iB=0;iB<nsize;iB++)
+	{
+		m_BrNom+=DecayBranchList[iB]->GetBranchRatio();
+	}
 
 }
 
@@ -127,13 +134,15 @@ void DecaySpec::LoadDataFile(std::string filename,  DecayType type)
 				break;
 				}
 			case BetaPlus:
-				DecayBranchList.push_back(new BetaBranch
-							(DecayBranchList.size()-1, br, BetaPlus, Ek, Z, A, ds, dp, gammalist));
+				DecayBranchList.emplace_back(new BetaBranch
+							(DecayBranchList.size(), br, BetaPlus, Ek, Z, A, ds, dp, gammalist));
+							//(DecayBranchList.size()-1, br, BetaPlus, Ek, Z, A, ds, dp, gammalist));
 				//cout<<"Beta+\t";
 				break;
 			case EC:
-				DecayBranchList.push_back(
-					new BetaBranch(DecayBranchList.size()-1, br, EC, Ek, Z, A, ds, dp, gammalist));
+				DecayBranchList.emplace_back(
+					new BetaBranch(DecayBranchList.size(), br, EC, Ek, Z, A, ds, dp, gammalist));
+					//new BetaBranch(DecayBranchList.size()-1, br, EC, Ek, Z, A, ds, dp, gammalist));
 				//cout<<"EC\t";
 				break;
 
@@ -163,7 +172,7 @@ DecayType DecaySpec::GetVertex(double& Ek, vector<double>& eGammas)
 	eGammas.clear();
 	size_t nsize = DecayBranchList.size();
 	//Double_t rndm = gRandom->Uniform();
-	Double_t rndm = G4UniformRand();
+	Double_t rndm = G4UniformRand() * m_BrNom;
 	Double_t brt = 0;
 
 	/*size_t iB=138;
