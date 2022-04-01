@@ -117,6 +117,7 @@ void PGRandomNucleus::GetCsIVolAndPos()
         {
             fCsIPos.push_back((*iPhyVol)->GetTranslation());
             std::cout << "Catch CsI physical volume, Pos: X: " << fCsIPos[fCsINum][0] << "\tY: " << fCsIPos[fCsINum][1] << "\tZ: " << fCsIPos[fCsINum][2] << std::endl;
+            std::cout<<"the physical volume is: "<<Name<<std::endl;
             ++fCsINum;
         }
     }
