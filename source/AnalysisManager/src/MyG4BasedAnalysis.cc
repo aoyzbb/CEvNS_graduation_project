@@ -45,7 +45,10 @@ MyG4BasedAnalysis::MyG4BasedAnalysis()
 
     //-------
     //#ANALYSIS 1. 初始化变量
-   EnergyDepositInCsI = 0 ;
+   EnergyPP = 0 ;
+   EnergyPN = 0;
+   EnergyNP = 0;
+   EnergyNN = 0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -91,7 +94,10 @@ void MyG4BasedAnalysis::BeginOfRunAction()
     //
     analysisManager->SetFirstNtupleId(1);
     analysisManager->CreateNtuple("particleshits", "Hits"); // ntuple Id = 1
-    analysisManager->CreateNtupleDColumn("EnergyDepositInCsI");
+    analysisManager->CreateNtupleDColumn("EnergyPP");
+    analysisManager->CreateNtupleDColumn("EnergyNP");
+    analysisManager->CreateNtupleDColumn("EnergyNN");
+    analysisManager->CreateNtupleDColumn("EnergyPN");
     analysisManager->FinishNtuple();
 
 
@@ -136,7 +142,10 @@ void MyG4BasedAnalysis::BeginOfEventAction(const G4Event *evt)
 
 
     //#ANALYSIS 3. 初始化Event开始的参数
-    EnergyDepositInCsI = 0;
+    EnergyPP = 0;
+    EnergyPN = 0;
+    EnergyNP = 0;
+    EnergyNN = 0;
     return;
 }
 
@@ -152,7 +161,10 @@ void MyG4BasedAnalysis::EndOfEventAction(const G4Event *)
     //#ANALYSIS 5. 在Event结束的时候将数据保存到ntuple
 
     auto analysisManager = G4AnalysisManager::Instance();
-    analysisManager->FillNtupleDColumn(1, 0, EnergyDepositInCsI);
+    analysisManager->FillNtupleDColumn(1, 0, EnergyPP);
+    analysisManager->FillNtupleDColumn(1, 1, EnergyNP);
+    analysisManager->FillNtupleDColumn(1, 2, EnergyNN);
+    analysisManager->FillNtupleDColumn(1, 3, EnergyPN);
     analysisManager->AddNtupleRow(1); 
     ++fNumOfEvents;
 
@@ -247,11 +259,41 @@ void MyG4BasedAnalysis::SteppingAction(const G4Step *aStep)
  
         if (presentVolume->GetName() == "CsIvol")
         {
-            G4double engdep_inside_this_step = aStep->GetTotalEnergyDeposit();
+            G4double engdep = aStep->GetTotalEnergyDeposit();
             // G4cout<<"Debug:Hi, I hit!---->"<<engdep_inside_this_step<<"<----my energy deposit"<<G4endl;
-
-           EnergyDepositInCsI += engdep_inside_this_step;
+            if(pdg_id == 2112.0){ // 中子
+                G4double process = postStepPoint->GetProcessDefinedStep()->GetProcessSubType();
+                if(process == 111){
+                    //quenching
+                    double quenching = 0.05546 + 4.307*engdep - 111.7 *engdep*engdep + 840.4 *engdep*engdep*engdep; //@su chengguang
+                    engdep = quenching * engdep;
+                }
             }
+             if (postPos.x() > 0 && postPos.y() > 0)
+            {
+                EnergyPP += engdep;
+            }
+
+            if (postPos.x() > 0 && postPos.y() < 0)
+            {
+                EnergyPN += engdep;
+            }
+
+            if (postPos.x() < 0 && postPos.y() < 0)
+            {
+                EnergyNN += engdep;
+            }
+
+            if (postPos.x() < 0 && postPos.y() > 0)
+            {
+                EnergyNP += engdep;
+            }
+            if (postPos.x() * postPos.y() == 0)
+            {
+                G4cout << "Debug:error found!,x,y is" << postPos.x() << "," << postPos.y() << G4endl;
+            }
+           
+        }
            
     
 

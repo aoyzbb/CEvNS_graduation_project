@@ -64,7 +64,10 @@ private:
 
     G4int fOutputLevel;
 
-    G4double EnergyDepositInCsI;
+    G4double EnergyPP;
+    G4double EnergyPN;
+    G4double EnergyNN;
+    G4double EnergyNP;
 
     //Truth 信息
     G4double fTruthEnergy;

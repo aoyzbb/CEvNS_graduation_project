@@ -238,7 +238,7 @@
             <solidref ref="stainFeItube" />
             
             
-            <physvol name="Cu">
+            <physvol name="Cuphy">
                 <volumeref ref="Cuvol" />
                 <position x="0." y="0." z="0." unit="mm" />
             </physvol>
