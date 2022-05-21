@@ -12,6 +12,8 @@
     杜瓦瓶
     铜
     PMT及CsI
+
+    相对于ver3 ,改变了Cu的厚度以探究Cu的厚度对不锈钢的影响
 -->
 
 <!DOCTYPE gdml [
@@ -119,9 +121,9 @@
         <variable name="stainFeOOH" value="1000"/>
 
         <!--支架(外) Cu-->
-        <variable name="CuX" value="280"/>
-        <variable name="CuY" value="280"/>
-        <variable name="CuZ" value="700"/>
+        <variable name="CuX" value="330"/>
+        <variable name="CuY" value="330"/>
+        <variable name="CuZ" value="750"/>
 
         <!--支架(内) Cu-->
         <variable name="LNX" value="180"/>

@@ -98,6 +98,13 @@ void MyG4BasedAnalysis::BeginOfRunAction()
     analysisManager->CreateNtupleDColumn("EnergyNP");
     analysisManager->CreateNtupleDColumn("EnergyNN");
     analysisManager->CreateNtupleDColumn("EnergyPN");
+        analysisManager->CreateNtupleDColumn("TruthEnergy");
+        analysisManager->CreateNtupleDColumn("TruthPosX");
+        analysisManager->CreateNtupleDColumn("TruthPosY");
+        analysisManager->CreateNtupleDColumn("TruthPosZ");
+        analysisManager->CreateNtupleDColumn("TruthMomDirX");
+        analysisManager->CreateNtupleDColumn("TruthMomDirY");
+        analysisManager->CreateNtupleDColumn("TruthMomDirZ");
     analysisManager->FinishNtuple();
 
 
@@ -133,8 +140,8 @@ void MyG4BasedAnalysis::BeginOfEventAction(const G4Event *evt)
     if (verbose > 1)
         G4cout << "====>MyG4BasedAnalysis::BeginOfEventAction()" << G4endl;
 
-    if(fNumOfEvents%1000000==0)
-        G4cout << "====>Generate " << fNumOfEvents/1000000 << "M events." << G4endl;
+    if(fNumOfEvents%10000==0)
+        G4cout << "====>Generate " << fNumOfEvents/1000000.0 << "M events." << G4endl;
 
     //-------
     fEvent = evt;
@@ -165,6 +172,25 @@ void MyG4BasedAnalysis::EndOfEventAction(const G4Event *)
     analysisManager->FillNtupleDColumn(1, 1, EnergyNP);
     analysisManager->FillNtupleDColumn(1, 2, EnergyNN);
     analysisManager->FillNtupleDColumn(1, 3, EnergyPN);
+    
+    Int_t TruthOutColumn = 4;
+    fTruthEnergy = fPGGenerator->GetParticleEnergy();
+    fTruthPosX = fPGGenerator->GetParticlePosition()[0];
+    fTruthPosY = fPGGenerator->GetParticlePosition()[1];
+    fTruthPosZ = fPGGenerator->GetParticlePosition()[2];
+    fTruthMomDirX = fPGGenerator->GetParticleMomentumDirection()[0];
+    fTruthMomDirY = fPGGenerator->GetParticleMomentumDirection()[1];
+    fTruthMomDirZ = fPGGenerator->GetParticleMomentumDirection()[2];
+
+    
+   
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn    , fTruthEnergy);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 1, fTruthPosX);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 2, fTruthPosY);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 3, fTruthPosZ);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 4, fTruthMomDirX);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 5, fTruthMomDirY);
+    analysisManager->FillNtupleDColumn(1, TruthOutColumn + 6, fTruthMomDirZ);
     analysisManager->AddNtupleRow(1); 
     ++fNumOfEvents;
 
